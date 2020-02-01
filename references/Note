@@ -1,0 +1,7 @@
+# https://chem.libretexts.org/Courses/University_of_Arkansas_Little_Rock/ChemInformatics_(2017)%3A_Chem_4399%2F%2F5399/2.2%3A_Chemical_Representations_on_Computer%3A_Part_II/2.2.2%3A_Anatomy_of_a_MOL_file
+
+Activation function explaination
+Sigmoid: 1/1 + exp(x) which produces a S-shaped curve. Although it is non-linear in nature but it does not capture slight changes within inputs hence variations in inputs will yield similar results.
+Hyperbolic Tangent Functions (Tanh): (1- (exp(-2(x))/(1 + exp(-2x)). It is a superior function when compared to Sigmoid. However it does not capture relationships better and is slower at converging. 
+Rectified Linear Units (ReLu): This function converges faster, optimises and produces the objective value quicker. It is by far the most popular activation function used within the hidden layers
+Softmax: Used in output layer because it reduces dimensions and can represent categorical distribution.

@@ -1,0 +1,191 @@
+
++++++++++++++++++++++++++++++++++++REPORT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+LISTA TEST FILE  
+dict_keys(['molecule117.ct', 'molecule015.ct', 'molecule090.ct', 'molecule104.ct', 'molecule101.ct', 'molecule049.ct', 'molecule088.ct', 'molecule146.ct', 'molecule021.ct', 'molecule059.ct', 'molecule114.ct', 'molecule126.ct', 'molecule010.ct', 'molecule066.ct', 'molecule085.ct', 'molecule023.ct', 'molecule053.ct', 'molecule097.ct', 'molecule108.ct', 'molecule056.ct', 'molecule026.ct', 'molecule083.ct', 'molecule069.ct', 'molecule135.ct', 'molecule079.ct', 'molecule031.ct', 'molecule029.ct', 'molecule012.ct', 'molecule109.ct', 'molecule092.ct', 'molecule125.ct', 'molecule017.ct', 'molecule142.ct', 'molecule013.ct', 'molecule144.ct', 'molecule115.ct', 'molecule100.ct', 'molecule016.ct', 'molecule014.ct', 'molecule086.ct', 'molecule020.ct', 'molecule037.ct', 'molecule074.ct', 'molecule038.ct', 'molecule024.ct', 'molecule072.ct', 'molecule129.ct', 'molecule136.ct', 'molecule005.ct', 'molecule047.ct', 'molecule122.ct', 'molecule045.ct', 'molecule147.ct', 'molecule063.ct', 'molecule076.ct', 'molecule054.ct', 'molecule084.ct', 'molecule116.ct', 'molecule008.ct', 'molecule011.ct', 'molecule058.ct', 'molecule018.ct', 'molecule078.ct', 'molecule067.ct', 'molecule080.ct', 'molecule062.ct', 'molecule055.ct', 'molecule098.ct', 'molecule006.ct', 'molecule145.ct', 'molecule112.ct', 'molecule095.ct', 'molecule064.ct', 'molecule134.ct', 'molecule030.ct', 'molecule091.ct', 'molecule127.ct', 'molecule051.ct', 'molecule138.ct', 'molecule041.ct', 'molecule096.ct', 'molecule061.ct', 'molecule043.ct', 'molecule105.ct', 'molecule035.ct', 'molecule019.ct', 'molecule034.ct', 'molecule001.ct', 'molecule082.ct', 'molecule057.ct', 'molecule039.ct', 'molecule131.ct', 'molecule102.ct', 'molecule137.ct', 'molecule089.ct', 'molecule044.ct', 'molecule133.ct', 'molecule130.ct', 'molecule110.ct', 'molecule113.ct', 'molecule141.ct', 'molecule103.ct', 'molecule143.ct', 'molecule032.ct', 'molecule042.ct', 'molecule132.ct', 'molecule065.ct', 'molecule123.ct', 'molecule003.ct', 'molecule007.ct', 'molecule118.ct', 'molecule070.ct', 'molecule048.ct', 'molecule150.ct', 'molecule040.ct', 'molecule050.ct', 'molecule128.ct', 'molecule081.ct', 'molecule025.ct', 'molecule033.ct', 'molecule068.ct', 'molecule046.ct', 'molecule075.ct', 'molecule099.ct', 'molecule111.ct', 'molecule140.ct', 'molecule028.ct', 'molecule073.ct', 'molecule077.ct', 'molecule093.ct', 'molecule009.ct', 'molecule121.ct', 'molecule060.ct', 'molecule052.ct', 'molecule027.ct'])----------------------------------------------------------------------------------------------------------
+
+LISTA VALIDATION FILE  
+dict_keys(['molecule106.ct', 'molecule071.ct', 'molecule087.ct', 'molecule002.ct', 'molecule139.ct', 'molecule119.ct', 'molecule148.ct', 'molecule036.ct', 'molecule107.ct', 'molecule124.ct', 'molecule004.ct', 'molecule149.ct', 'molecule022.ct', 'molecule120.ct', 'molecule094.ct'])----------------------------------------------------------------------------------------------------------
+
+Our model: 
+
+Net(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (LRelu): LeakyReLU(negative_slope=0.25)
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (LReluRoot): LeakyReLU(negative_slope=0.25)
+)
+Printing children
+------------------------------[Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25)]
+
+Printing Modules
+------------------------------[Net(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (LRelu): LeakyReLU(negative_slope=0.25)
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (LReluRoot): LeakyReLU(negative_slope=0.25)
+), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25)]
+The state dict keys: 
+
+odict_keys(['fc1.weight', 'fc2.weight', 'fc1Root.weight', 'fc2Root.weight'])Models state_dict:fc1.weight	torch.Size([4, 12])fc2.weight	torch.Size([1, 4])fc1Root.weight	torch.Size([4, 12])fc2Root.weight	torch.Size([1, 4])OrderedDict([('fc1.weight', tensor([[ 6.3632e-01,  7.7073e-01, -4.8685e-06, -2.7457e-18, -8.6112e-11,
+          3.0156e-01, -1.8357e-43, -1.8170e-11, -9.5040e-02,  2.4842e-01,
+          3.2285e-01,  2.7869e-01],
+        [-5.6226e-03, -1.2714e-02,  7.2868e-44,  2.7886e-43,  1.2752e-43,
+         -6.1231e-03, -3.0829e-44,  2.4576e-25,  5.3620e-04, -7.7403e-04,
+         -1.3793e-03, -1.4096e-03],
+        [ 4.7929e-01,  8.6766e-02,  8.8282e-44,  1.9618e-44,  3.4864e-42,
+          6.0877e-01,  1.2474e-25,  6.3689e-23, -7.0872e-02,  8.2655e-02,
+          1.4214e-01,  1.4403e-01],
+        [ 3.1300e-01,  8.5461e-02, -2.8026e-45,  4.5033e-05, -2.1499e-04,
+          1.9026e-01, -3.2397e-15,  8.6881e-44, -1.2629e-01,  4.6394e-02,
+          9.9382e-02,  1.0013e-01]], device='cuda:2')), ('fc2.weight', tensor([[ 1.1190, -0.0263,  0.6298,  0.4441]], device='cuda:2')), ('fc1Root.weight', tensor([[-5.5621e-01,  9.4137e-01,  9.1447e-07,  1.6395e-42, -9.2906e-43,
+         -1.2757e+00, -1.9906e+00, -2.3371e+00,  1.7516e-43, -1.4654e+00,
+         -2.8457e-01,  3.9583e-01],
+        [-2.9036e+00,  2.3688e+00,  7.5390e-43,  7.7912e-43,  4.1885e-42,
+         -3.5021e+00, -4.1746e+00, -4.1742e+00,  6.4600e-43, -1.8912e+00,
+         -1.8036e+00,  7.3135e-01],
+        [-1.4531e+00,  1.2813e+00, -6.7963e-43,  8.5759e-43,  1.0706e-42,
+         -1.6997e+00, -2.4024e+00, -2.5914e+00,  7.6091e-43, -1.3345e+00,
+         -4.3046e-01,  4.2252e-01],
+        [ 4.9756e+00, -1.0649e+00,  6.7402e-43,  9.7671e-43,  8.3798e-43,
+          5.1713e+00,  7.3795e+00,  7.2838e+00,  4.2039e-44,  4.3099e-01,
+          7.0065e-01,  3.5794e+00]], device='cuda:2')), ('fc2Root.weight', tensor([[ 1.4796,  3.0423,  1.3427, -5.9332]], device='cuda:2'))])
+---------------plt.close(fig)    # close the figure window-------------------------------------------------------------------------------------------
+
+ Optimizer's state_dict:
+CRITERION = MSELoss()
+OPTIMIZER = Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+)
+Tempo di training 196.02492117881775
+
+
+state	{139653589102736: {'step': 15000, 'exp_avg': tensor([[-1.0132e-01, -2.0217e-01,  1.7624e-07, -1.6631e-20, -1.3595e-13,
+         -3.2795e-01,  7.0065e-45,  7.0906e-13, -1.2678e-01,  3.0288e-02,
+          5.0356e-02,  2.6239e-02],
+        [-7.0664e-04, -4.4191e-03, -1.4013e-45, -9.8091e-45, -5.6052e-45,
+         -1.0563e-03,  0.0000e+00,  7.0783e-28,  7.3560e-04,  2.8918e-04,
+          5.8191e-05,  3.1332e-06],
+        [ 2.5183e-02, -3.4851e-01, -1.4013e-45, -4.2039e-45, -9.2486e-44,
+          1.1290e-01, -4.4669e-27, -8.4767e-25, -8.3123e-02, -2.1668e-02,
+          1.4736e-03,  6.0680e-03],
+        [ 8.7436e-04, -2.2931e-01,  2.8026e-45, -1.4723e-06,  1.4441e-05,
+         -8.2314e-02,  1.1755e-16, -2.8026e-45, -1.1040e-01, -2.3357e-02,
+          4.7232e-04,  3.3097e-03]], device='cuda:2'), 'exp_avg_sq': tensor([[7.0799e+01, 2.4211e+02, 4.1875e-10, 5.1573e-10, 3.6079e-10, 7.0826e+01,
+         3.4801e-10, 3.7305e-10, 1.9961e+01, 6.8629e+00, 1.0165e+00, 1.1313e-01],
+        [3.9783e-02, 1.6959e-01, 3.3158e-10, 3.4647e-10, 7.3923e-10, 4.0998e-02,
+         1.2132e-08, 3.5704e-10, 1.1356e-02, 3.9626e-03, 5.9452e-04, 7.2815e-05],
+        [2.2223e+01, 7.5707e+01, 6.4591e-10, 4.2950e-09, 2.7229e-10, 2.2254e+01,
+         3.1516e-10, 3.7439e-10, 6.2631e+00, 2.1486e+00, 3.1586e-01, 3.5122e-02],
+        [1.2014e+01, 4.1124e+01, 4.7417e-10, 5.6196e-10, 7.0077e-10, 1.2012e+01,
+         5.4188e-10, 7.0457e-10, 3.3900e+00, 1.1627e+00, 1.7086e-01, 1.8932e-02]],
+       device='cuda:2')}, 139653589103816: {'step': 15000, 'exp_avg': tensor([[-0.2349, -0.0161, -0.1580,  0.0050]], device='cuda:2'), 'exp_avg_sq': tensor([[3.4182e+02, 1.9993e-01, 9.6125e+01, 2.0289e+01]], device='cuda:2')}, 139653589103960: {'step': 15000, 'exp_avg': tensor([[ 1.0360e-02, -1.2139e-01, -4.6573e-10, -2.8026e-45,  0.0000e+00,
+          1.7286e-03, -2.0871e-02, -2.5029e-02, -2.8026e-45, -1.0811e-02,
+          4.6298e-03,  3.9097e-03],
+        [-5.6146e-03, -2.6477e-01,  1.4013e-45,  1.4013e-45, -1.4013e-45,
+         -1.2792e-02, -4.3817e-02, -4.3811e-02, -4.2039e-45, -1.4561e-02,
+         -5.1164e-03,  7.0293e-03],
+        [ 4.9621e-03, -8.0739e-02, -4.2039e-45,  1.4013e-45, -0.0000e+00,
+          2.0037e-03, -2.6097e-02, -2.8364e-02, -0.0000e+00, -2.9254e-03,
+          2.1314e-03,  4.3101e-03],
+        [-1.0692e-02,  1.3664e-01, -4.2039e-45, -0.0000e+00, -0.0000e+00,
+         -8.3447e-03,  3.9209e-02,  3.8061e-02,  4.2039e-45,  1.9853e-02,
+          5.7232e-03,  9.8992e-03]], device='cuda:2'), 'exp_avg_sq': tensor([[1.6683e-02, 4.2557e+00, 8.5094e-14, 9.9659e-13, 4.3348e-12, 1.6531e-02,
+         8.8419e-04, 1.1396e-03, 4.3410e-12, 3.7330e-03, 1.9535e-03, 7.8648e-04],
+        [6.2913e-02, 1.6889e+01, 4.1095e-12, 1.8188e-11, 1.0437e-13, 6.2985e-02,
+         2.8624e-03, 2.8618e-03, 1.6762e-10, 1.2515e-02, 7.7277e-03, 3.0174e-03],
+        [1.6431e-02, 3.9002e+00, 9.4850e-10, 4.9251e-13, 2.8578e-11, 1.6389e-02,
+         1.2036e-03, 1.3597e-03, 2.8072e-12, 3.9673e-03, 1.8041e-03, 7.7606e-04],
+        [4.3851e-02, 5.1083e+00, 1.0522e-10, 2.3883e-12, 2.5218e-13, 4.3640e-02,
+         1.4051e-02, 1.3934e-02, 1.8357e-11, 7.0984e-03, 2.6307e-03, 9.5480e-03]],
+       device='cuda:2')}, 139653589104176: {'step': 15000, 'exp_avg': tensor([[-0.0804, -0.2349, -0.1317,  0.1177]], device='cuda:2'), 'exp_avg_sq': tensor([[1.3413, 6.6877, 3.3003, 0.3610]], device='cuda:2')}}param_groups	[{'lr': 0.001, 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0, 'amsgrad': False, 'params': [139653589102736, 139653589103816, 139653589103960, 139653589104176]}]
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Average Error Test Dataset= 5.6924947738647464
+RMSE Train Dataset = [19.329186795056927, 17.93190771248236, 15.184315288683017, 10.356601073277643, 7.00816033051911, 5.851066374787417, 5.530919296809732, 5.397319319061007, 5.315121890058285, 5.2643657502998105]
+RMSE Test Dataset = [31.69127889819414, 30.6627547491838, 28.170840463880488, 22.222181438832475, 16.39466201624642, 13.69672685491267, 12.647341458649706, 11.94867794113707, 11.178777778980846, 10.370515888444531]
+Number of epochs 15000
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+pred =155.22035217285156
+true = tensor([152.8000])
+differenza = tensor([2.4203])
+
+
+pred =139.44862365722656
+true = tensor([143.3000])
+differenza = tensor([3.8514])
+
+
+pred =158.23609924316406
+true = tensor([164.])
+differenza = tensor([5.7639])
+
+
+pred =-51.22801971435547
+true = tensor([-88.6000])
+differenza = tensor([37.3720])
+
+
+pred =161.23583984375
+true = tensor([159.7000])
+differenza = tensor([1.5358])
+
+
+pred =157.98463439941406
+true = tensor([157.0400])
+differenza = tensor([0.9446])
+
+
+pred =168.03382873535156
+true = tensor([163.8400])
+differenza = tensor([4.1938])
+
+
+pred =114.26718139648438
+true = tensor([117.6000])
+differenza = tensor([3.3328])
+
+
+pred =153.3830108642578
+true = tensor([148.2000])
+differenza = tensor([5.1830])
+
+
+pred =156.5370635986328
+true = tensor([155.7000])
+differenza = tensor([0.8371])
+
+
+pred =-9.867517471313477
+true = tensor([-11.7000])
+differenza = tensor([1.8325])
+
+
+pred =169.17111206054688
+true = tensor([162.])
+differenza = tensor([7.1711])
+
+
+pred =93.6172103881836
+true = tensor([98.4000])
+differenza = tensor([4.7828])
+
+
+pred =161.71343994140625
+true = tensor([163.])
+differenza = tensor([1.2866])
+
+
+pred =155.22035217285156
+true = tensor([160.1000])
+differenza = tensor([4.8797])
+
+

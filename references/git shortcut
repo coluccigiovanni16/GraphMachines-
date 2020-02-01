@@ -1,0 +1,14 @@
+GIT COMMAND USED IN THE CURRENT PROJECT 
+
+-Save the current status of the work ('.' stay for all the files in the directory)
+git add .
+
+-Commit the changes saved with the command 'git add'
+git commit -m 'Commit with the prec files'^C
+
+-Push the commit to the server 
+git push origin master
+
+-Check the files not up to date with respect of the server 
+git status
+

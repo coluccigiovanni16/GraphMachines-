@@ -1,0 +1,15 @@
+stringa per copire file da mio pc a server
+scp  /home/personnels/colucci191/Desktop/nn.py  colucci191@roadrunner.info.unicaen.fr:~/  
+
+stringa per copiare cartella da pc a server 
+scp -r /home/personnels/colucci191/Documents/Code/Alkane  colucci191@roadrunner.info.unicaen.fr:~/
+
+
+connessione server centrale
+ssh colucci191@roadrunner.info.unicaen.fr
+
+connessione singolo server 
+ssh NOMESERVER 
+es. ssh cody
+
+

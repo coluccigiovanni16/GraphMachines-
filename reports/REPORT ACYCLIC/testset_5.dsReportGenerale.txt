@@ -1,0 +1,204 @@
+
++++++++++++++++++++++++++++++++++++REPORT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+LISTA TEST FILE  
+['1,1-bis(ethylthio)ethane.ct', '1,1-bis(isopropylthio)ethane.ct', '1,1-bis(methylthio)ethane.ct', '1,1-diethoxypentane.ct', '1,1-diethoxypropane.ct', '1,1-diisopropoxyethane.ct', '1,1-diisopropoxypropane.ct', '1,1-dimethoxy-2,2-dimethylpentane.ct', '1,1-dimethoxy-2-methylpropane.ct', '1,1-dimethoxybutane.ct', '1,1-dimethoxyhexane.ct', '1,1-dipropoxyethane.ct', '1,1-dipropoxypropane.ct', '1,2-bis(ethylthio)ethane.ct', '1,2-bis(methylthio)ethane.ct', '1,2-diethoxyethane.ct', '1,2-dimethoxyethane.ct', '1,2-dimethoxypropane.ct', '1,2-dimethylpropyl_ethyl_ether.ct', '1,2-dimethylpropyl_methyl_ether.ct', '1,3-bis(ethylthio)propane.ct', '1,3-diethoxypropane.ct', '1,3-diisopropoxypropane.ct', '1,3-dimethoxybutane.ct', '1,3-dimethoxypentane.ct', '1,3-dimethoxypropane.ct', '1,3-dimethylpentyl_methyl_ether.ct', '1,3-dipropoxypropane.ct', '1,4-diethoxybutane.ct', '1,4-dimethoxybutane.ct', '1,4-dimethoxypentane.ct', '1,5-dimethoxypentane.ct', '1,5-dimethylhexyl_methyl_ether.ct', '1-ethoxy-1-propoxyethane.ct', '1-ethoxy-2-methoxyethane.ct', '1-ethoxy-4-methoxybutane.ct', '1-ethyl-1,3-dimethylbutyl_methyl_ether.ct', '1-ethylpropyl_methyl_sulfide.ct', '1-methoxy-1-propoxyethane.ct', '2,2-bis(propylthio)propane.ct', '2,2-dimethoxypropane.ct', '2,2-dimethylpropyl_ethyl_ether.ct', '2,4-dimethoxy-2-methylpentane.ct', '2-ethoxy-2-methoxypropane.ct', '2-ethylhexyl_methyl_ether.ct', 'bis(1-ethylpropyl)_ether.ct', 'bis(1-methylbutyl)_ether.ct', 'bis(butylthio)methane.ct', 'bis(ethylthio)methane.ct', 'bis(methylthio)methane.ct', 'butyl_ethyl_sulfide.ct', 'butyl_isobutyl_sulfide.ct', 'butyl_isopentyl_ether.ct', 'butyl_isopropyl_ether.ct', 'butyl_isopropyl_sulfide.ct', 'butyl_methyl_ether.ct', 'butyl_methyl_sulfide.ct', 'butyl_pentyl_ether.ct', 'butyl_propyl_ether.ct', 'butyl_propyl_sulfide.ct', 'butyl_sec-butyl_ether.ct', 'butyl_sec-butyl_sulfide.ct', 'butyl_tert-butyl_ether.ct', 'di-sec-butyl_sulfide.ct', 'di-tert-butyl_disulfide.ct', 'di-tert-butyl_ether.ct', 'di-tert-butyl_peroxide.ct', 'di-tert-pentyl_sulfide.ct', 'dibutyl_disulfide.ct', 'dibutyl_ether.ct', 'dibutylsulfide.ct', 'diethoxymethane.ct', 'diethyl_disulfide.ct', 'diethyl_ether.ct', 'diethyl_peroxide.ct', 'diethyl_sulfide.ct', 'diisobutyl_disulfide.ct', 'diisobutyl_ether.ct', 'diisobutyl_sulfide.ct', 'diisopentyl_ether.ct', 'diisopentyl_sulfide.ct', 'diisopropyl_ether.ct', 'diisopropyl_sulfide.ct', 'dimethoxymethane.ct', 'dimethyl_disulfide.ct', 'dimethyl_ether.ct', 'dimethyl_peroxide.ct', 'dimethyl_sulfide.ct', 'dipentyl_ether.ct', 'dipentyl_sulfide.ct', 'dipropoxymethane.ct', 'dipropyl_disulfide.ct', 'ethyl_1,1,3,3-tetramethylbutyl_ether.ct', 'ethyl_1,1,3-trimethylbutyl_ether.ct', 'ethyl_1-ethylpropyl_ether.ct', 'ethyl_1-methylbutyl_ether.ct', 'ethyl_2-methylbutyl_sulfide.ct', 'ethyl_butyl_ether.ct', 'ethyl_heptyl_sulfide.ct', 'ethyl_isobutyl_ether.ct', 'ethyl_isobutyl_sulfide.ct', 'ethyl_isopentyl_ether.ct', 'ethyl_isopentyl_sulfide.ct', 'ethyl_isopropyl_disulfide.ct', 'ethyl_isopropyl_ether.ct', 'ethyl_methyl_disulfide.ct', 'ethyl_methyl_ether.ct', 'ethyl_methyl_sulfide.ct', 'ethyl_octyl_ether.ct', 'ethyl_pentyl_ether.ct', 'ethyl_propyl_disulfide.ct', 'ethyl_propyl_sulfide.ct', 'ethyl_sec-butyl_ether.ct', 'ethyl_tert-pentyl_ether.ct', 'ethylthiomethylthiomethane.ct', 'heptyl_methyl_ether.ct', 'heptyl_methyl_sulfide.ct', 'hexyl_methyl_ether.ct', 'hexyl_methyl_sulfide.ct', 'isobutyl_4-methylpentyl_sulfide.ct', 'isobutyl_isopentyl_ether.ct', 'isobutyl_isopropyl_sulfide.ct', 'isobutyl_methyl_ether.ct', 'isobutyl_methyl_sulfide.ct', 'isobutyl_tert-butyl_ether.ct', 'isopentyl_methyl_ether.ct', 'isopentyl_methyl_sulfide.ct', 'isopentyl_pentyl_ether.ct', 'isopentyl_propyl_ether.ct', 'isopropyl_heptyl_ether.ct', 'isopropyl_methyl_ether.ct', 'isopropyl_methyl_peroxide.ct', 'isopropyl_methyl_sulfide.ct', 'isopropyl_propyl_disulfide.ct', 'isopropyl_propyl_ether.ct', 'isopropyl_propyl_sulfide.ct', 'isopropyl_tert-pentyl_ether.ct', 'methyl_1,1,4-trimethylpentyl_ether.ct', 'methyl_1-methylbutyl_ether.ct', 'methyl_1-methylheptyl_ether.ct', 'methyl_1-methyloctyl_ether.ct', 'methyl_2-methylbutyl_ether.ct', 'methyl_2-methylbutyl_sulfide.ct', 'methyl_nonyl_sulfide.ct', 'methyl_octyl_ether.ct', 'methyl_pentyl_ether.ct', 'methyl_pentyl_sulfide.ct', 'methyl_propyl_ether.ct', 'methyl_propyl_sulfide.ct', 'methyl_tert-pentyl_ether.ct', 'sec-butyl_ethyl_disulfide.ct', 'sec-butyl_ethyl_sulfide.ct', 'sec-butyl_isobutyl_ether.ct', 'sec-butyl_isobutyl_sulfide.ct', 'sec-butyl_isopropyl_sulfide.ct', 'sec-butyl_methyl_ether.ct', 'tert-butyl_ethyl_disulfide.ct', 'tert-butyl_ethyl_sulfide.ct', 'tert-butyl_isopentyl_ether.ct', 'tert-butyl_isopropyl_ether.ct', 'tert-butyl_methyl_ether.ct', 'tert-butyl_methyl_sulfide.ct', 'tert-butyl_propyl_ether.ct', 'tert-butyl_propyl_sulfide.ct', 'tert-butyl_tert-pentyl_peroxide.ct']----------------------------------------------------------------------------------------------------------
+
+LISTA VALIDATION FILE  
+['1,1-diethoxyethane.ct', '1,1-dimethoxyethane.ct', '1-ethylpropyl_propyl_ether.ct', '2,2-diethoxypropane.ct', '3,5-dimethylhexyl_methyl_ether.ct', 'butyl_isobutyl_ether.ct', 'di-tert-butyl_sulfide.ct', 'diisopropyl_disulfide.ct', 'dipropyl_ether.ct', 'dipropyl_sulfide.ct', 'ethyl_heptyl_ether.ct', 'ethyl_isopropyl_sulfide.ct', 'ethyl_methyl_peroxide.ct', 'ethyl_propyl_ether.ct', 'heptyl_propyl_ether.ct', 'isobutyl_propyl_ether.ct', 'isobutyl_propyl_sulfide.ct', 'methyl_octyl_sulfide.ct']----------------------------------------------------------------------------------------------------------
+
+Our model: 
+
+Net(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (LRelu): LeakyReLU(negative_slope=0.25)
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (LReluRoot): LeakyReLU(negative_slope=0.25)
+)
+Printing children
+------------------------------[Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25)]
+
+Printing Modules
+------------------------------[Net(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (LRelu): LeakyReLU(negative_slope=0.25)
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (LReluRoot): LeakyReLU(negative_slope=0.25)
+), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), LeakyReLU(negative_slope=0.25)]
+The state dict keys: 
+
+odict_keys(['fc1.weight', 'fc2.weight', 'fc1Root.weight', 'fc2Root.weight'])Models state_dict:fc1.weight	torch.Size([4, 12])fc2.weight	torch.Size([1, 4])fc1Root.weight	torch.Size([4, 12])fc2Root.weight	torch.Size([1, 4])OrderedDict([('fc1.weight', tensor([[ 5.4190e-01, -6.7224e-01, -8.9784e-01, -7.0584e-01, -1.5765e-42,
+         -6.6299e-02,  2.0267e+00,  7.2982e-02,  1.2845e-01,  5.5077e-01,
+          4.3644e-01,  2.4254e-01],
+        [ 5.5411e-02,  2.6787e-01,  3.1428e-02,  2.2479e-02, -1.3312e-42,
+          7.5933e-02, -5.6690e-02,  2.5909e-03,  8.8104e-02,  1.0958e-03,
+         -1.2026e-02, -6.8141e-03],
+        [-4.1503e-01,  1.2832e-01,  1.8407e-01,  1.0995e-01, -1.4980e-42,
+          2.5178e-01, -3.0280e-01,  8.1244e-03, -2.6834e-02, -1.6999e-01,
+         -6.0258e-02, -3.3223e-02],
+        [-4.4939e-01, -1.6135e-01, -3.8479e-01,  1.9223e-01, -1.8161e-42,
+         -3.1817e-01, -5.2623e-01,  8.1984e-01, -1.2997e-01, -5.6036e-01,
+         -1.4876e-01, -6.1794e-02]])), ('fc2.weight', tensor([[-1.4634,  0.1797,  0.8332,  1.3386]])), ('fc1Root.weight', tensor([[-6.6260e-01, -1.3475e+00, -1.3900e+00, -1.3498e+00, -2.0263e+00,
+         -9.5045e-01,  1.9667e+00, -1.8925e+00,  2.1995e-41, -3.2791e-01,
+         -8.4327e-01,  2.1085e-01],
+        [ 3.2335e-01, -8.6785e-01, -8.7216e-01, -1.8476e+00, -2.7411e+00,
+         -7.4922e-01,  2.5745e+00, -2.2903e+00, -1.9121e-41, -9.1563e-02,
+         -1.6439e+00,  4.2550e-01],
+        [-1.2218e+00, -2.7342e+00, -1.8612e+00, -1.1721e+00,  1.4759e+00,
+         -2.5720e+00,  2.7979e+00, -2.7264e+00,  3.4127e-41, -8.7643e-01,
+         -1.5130e+00,  1.4415e+00],
+        [ 2.2446e+00, -1.3542e-03,  1.4493e+00,  1.1414e+00,  1.3832e+00,
+          2.6915e-01, -1.1249e+00,  3.8315e+00, -1.9463e-41,  1.5735e+00,
+          4.6736e-01, -1.1789e-01]])), ('fc2Root.weight', tensor([[ 1.7036,  3.1912,  2.9321, -3.7612]]))])
+---------------plt.close(fig)    # close the figure window-------------------------------------------------------------------------------------------
+
+ Optimizer's state_dict:
+CRITERION = MSELoss()
+OPTIMIZER = Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+)
+Tempo di training 1460.7266159057617
+
+
+state	{140439397059392: {'step': 15000, 'exp_avg': tensor([[-8.1114e-01,  1.0342e+00,  1.2193e-01, -2.1443e-02, -5.1147e-43,
+         -3.5361e-01, -1.5580e-02,  5.3760e-02, -3.0958e-01, -1.8578e-01,
+         -6.5673e-02,  2.1201e-02],
+        [ 8.1410e-02,  5.0542e-02, -2.4485e-03,  1.0016e-03, -4.4141e-43,
+          6.7825e-02,  2.3830e-03, -8.2578e-05,  7.2640e-02,  1.1713e-02,
+          2.5052e-03, -5.3892e-04],
+        [ 3.2368e-03, -1.3646e-01,  1.3916e-03,  6.3081e-03, -4.9746e-43,
+          1.3066e-01, -2.6070e-03, -1.5609e-03,  4.1169e-02, -4.1423e-03,
+          1.0003e-02, -2.6825e-03],
+        [ 1.2236e-02,  2.0391e+00, -4.1817e-02,  3.9712e-03, -5.9555e-43,
+          1.0689e-01, -1.7647e-02,  6.3487e-02,  3.7261e-02, -1.8842e-01,
+          1.6414e-02, -3.2494e-03]]), 'exp_avg_sq': tensor([[6.6077e+01, 2.3435e+02, 2.8025e+00, 1.4223e-01, 2.2719e-09, 4.9654e+01,
+         3.1400e-01, 6.7536e-01, 1.2377e+01, 1.5394e+01, 4.3338e-01, 4.0635e-02],
+        [8.5634e-01, 7.2740e-01, 9.3679e-03, 4.8961e-04, 7.9498e-10, 7.6048e-01,
+         1.0786e-03, 1.8795e-03, 4.8926e-01, 3.8764e-02, 1.1047e-03, 9.8516e-05],
+        [2.2888e+00, 9.1021e+00, 1.1486e-01, 5.8897e-03, 3.4509e-09, 1.7085e+00,
+         1.5823e-02, 2.5009e-02, 4.2826e-01, 5.3759e-01, 1.5058e-02, 1.3703e-03],
+        [1.1650e+01, 1.8786e+02, 1.4814e+00, 1.5127e-02, 1.5051e-09, 5.6715e+00,
+         3.8158e-02, 2.0764e+00, 9.0638e-01, 6.0085e+00, 1.3601e-01, 3.2135e-03]])}, 140439397059536: {'step': 15000, 'exp_avg': tensor([[1.8067, 0.0750, 0.2357, 0.0281]]), 'exp_avg_sq': tensor([[210.1669,   0.2611,   1.2868,   0.7690]])}, 140439397059680: {'step': 15000, 'exp_avg': tensor([[-9.9441e-03,  9.2110e-02,  1.0505e-01,  9.4302e-03,  4.4204e-03,
+         -1.3337e-02,  8.5648e-03, -9.0900e-03,  3.9937e-43, -1.4631e-02,
+         -3.8430e-04, -3.9943e-04],
+        [-3.4670e-03,  2.1890e-01,  2.4452e-01,  3.0147e-02,  2.7633e-02,
+         -6.0637e-03, -4.3921e-03, -7.4659e-03, -3.4332e-43, -3.1333e-02,
+         -1.8887e-03, -1.8253e-04],
+        [-4.1054e-02,  1.7752e-01,  2.1712e-01,  1.8696e-01,  5.8780e-02,
+         -6.2545e-02,  3.9238e-03, -5.8594e-03,  6.2358e-43, -3.0895e-02,
+         -1.7896e-03, -3.3648e-03],
+        [ 5.6918e-03, -1.3542e-02, -1.0094e-01,  2.0583e-03,  2.4309e-03,
+          2.6727e-03,  4.0430e-03,  1.2445e-02, -3.4332e-43, -6.4194e-04,
+          2.4682e-04,  1.9316e-04]]), 'exp_avg_sq': tensor([[1.2675e-02, 5.3627e-01, 8.6830e-01, 1.7716e-02, 2.0902e-03, 7.0463e-03,
+         1.1693e-03, 9.5536e-04, 1.3836e-11, 9.0638e-03, 1.8564e-04, 5.3591e-05],
+        [5.5394e-02, 2.3858e+00, 3.7591e+00, 8.2260e-02, 1.1476e-02, 2.7927e-02,
+         3.2454e-03, 4.9067e-03, 1.8988e-09, 3.9716e-02, 7.5982e-04, 2.3250e-04],
+        [5.4515e-02, 1.2540e+00, 2.0663e+00, 7.9920e-01, 8.0928e-01, 3.8292e-02,
+         1.4527e-03, 1.0876e-03, 3.5830e-11, 2.3950e-02, 4.7978e-04, 1.2917e-02],
+        [1.0093e-02, 2.4203e-01, 3.7798e-01, 5.2899e-03, 6.3330e-04, 3.5426e-03,
+         3.0951e-04, 2.1015e-03, 7.9748e-13, 8.0405e-03, 9.3001e-05, 1.9273e-05]])}, 140439397059896: {'step': 15000, 'exp_avg': tensor([[-0.2882, -0.2160, -0.4296,  0.0385]]), 'exp_avg_sq': tensor([[2.4972, 0.9610, 3.1718, 0.0363]])}}param_groups	[{'lr': 0.001, 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0, 'amsgrad': False, 'params': [140439397059392, 140439397059536, 140439397059680, 140439397059896]}]
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Average Error Test Dataset= 4.758529239230686
+RMSE Train Dataset = 6.296982832901132
+RMSE Test Dataset = 5.793920540382953
+Number of epochs 15000
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+pred =100.43541717529297
+true = 103.0
+differenza = 2.5645828247070312
+
+
+pred =61.17848205566406
+true = 64.4000015258789
+differenza = 3.2215194702148438
+
+
+pred =126.7879867553711
+true = 128.5
+differenza = 1.7120132446289062
+
+
+pred =119.28744506835938
+true = 114.0
+differenza = 5.287445068359375
+
+
+pred =146.59524536132812
+true = 155.5
+differenza = 8.904754638671875
+
+
+pred =128.08889770507812
+true = 132.0
+differenza = 3.911102294921875
+
+
+pred =142.65069580078125
+true = 148.5
+differenza = 5.84930419921875
+
+
+pred =178.76788330078125
+true = 177.1999969482422
+differenza = 1.5678863525390625
+
+
+pred =93.24327087402344
+true = 90.0999984741211
+differenza = 3.1432723999023438
+
+
+pred =137.0821533203125
+true = 142.8000030517578
+differenza = 5.7178497314453125
+
+
+pred =167.2703094482422
+true = 165.5
+differenza = 1.7703094482421875
+
+
+pred =102.67306518554688
+true = 107.4000015258789
+differenza = 4.726936340332031
+
+
+pred =35.58868408203125
+true = 39.0
+differenza = 3.41131591796875
+
+
+pred =74.1501693725586
+true = 63.599998474121094
+differenza = 10.5501708984375
+
+
+pred =186.96026611328125
+true = 187.0
+differenza = 0.03973388671875
+
+
+pred =107.15010070800781
+true = 102.5
+differenza = 4.6501007080078125
+
+
+pred =150.1074676513672
+true = 155.0
+differenza = 4.8925323486328125
+
+
+pred =204.26730346679688
+true = 218.0
+differenza = 13.732696533203125
+
+
