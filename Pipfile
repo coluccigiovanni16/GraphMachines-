@@ -10,6 +10,8 @@ matplotlib = "*"
 jupyter = "*"
 torch = "*"
 torchvision = "*"
+networkx = "*"
+pybel = "*"
 
 [requires]
 python_version = "3.7"
