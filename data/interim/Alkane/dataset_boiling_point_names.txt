@@ -1,4 +1,4 @@
-1 molecule001.ct -164.00 methane 
+1 molecule001.ct -164.0 methane 
 2 molecule002.ct -88.60 ethane
 3 molecule003.ct -42.10 propane
 4 molecule004.ct -11.70 2-methylpropane
