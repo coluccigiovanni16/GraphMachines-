@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+
+
 def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, true, predicted, optimizer,
                  graph_set_train, graph_set_test, net, criterion, training_time):
     file = open(file_name, 'w+')
@@ -62,7 +65,7 @@ def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, nu
         file.write('true = ')
         file.write(str(true[i]))
         file.write('\n')
-        file.write('differenza = ')
+        file.write('difference = ')
         file.write(str(abs(predicted[i] - true[i])))
         file.write('\n\n\n')
     file.close()
@@ -95,3 +98,30 @@ def rmse_stamp(file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, opt
     file.write(
         '\n' + '+' * 500 + '\n')
     file.close()
+
+
+def plotRmse(true, predicted, RMSETrain, RMSETest):
+    # plotting points as a scatter plot 0
+    plt.scatter(true, predicted, label="C", color="green", marker="*", s=30)
+
+    # x-axis label
+    plt.xlabel('Real')
+    # frequency label
+    plt.ylabel('Predicted')
+    # plot title  third_tensor = torch.cat((first_tensor, second_tensor), 0)
+    plt.title('Regression of Alkan')
+    # showing legend
+    plt.legend()
+    plt.grid()
+    plt.savefig('./REPORT/' + testFile + "PredReal.png")
+    # function to show the plot retain_graph=True
+    plt.show()
+    plt.close()  # close the figure window
+    # plotting points as a scatter pltorch.autograd.backwardot
+    plt.plot(RMSETrain, color="blue", label='RMSETrain')
+    plt.plot(RMSETest, color="red", label='RMSETest')
+    plt.legend()
+    plt.grid()
+    plt.title('RMSE of Alkan')
+    plt.savefig('./REPORT/' + testFile + "RMSE.png")
+    plt.show()
