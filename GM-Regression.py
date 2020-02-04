@@ -66,7 +66,7 @@ output_size = 1  # The number of output classes. In this case 1
 net = RegressionGm(input_size, hidden_size, output_size).to(device)
 
 criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(net.parameters())
+optimizer = torch.optim.Adam(net.parameters(),lr=learning_rate)
 
 RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
 predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
