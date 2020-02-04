@@ -52,7 +52,7 @@ def molToNetworkx(filename):
 # %%
 
 def load_true_value(base, filename_path):
-    Y = {}
+    y = {}
     dataset_name = []
     filename_path = base + filename_path
     file_handle = open(filename_path, 'r')
@@ -62,14 +62,14 @@ def load_true_value(base, filename_path):
         if not line:
             break
         value = line.split(' ')
-        Y[value[0]] = torch.FloatTensor([float(value[1])])
+        y[value[0]] = torch.FloatTensor([float(value[1])])
         dataset_name.append(base + value[0])
     # close the pointer to that file
     file_handle.close()
-    return dataset_name, Y
+    return dataset_name, y
 
 
-def dictOfFNameList(base, dataset_name):
+def dict_of_file_name_list(base, dataset_name):
     graphs_dict_list = {}
     # construct graphs from every single .ct file
     for filename in dataset_name:
@@ -89,7 +89,7 @@ def get_weight_sum(graph, node):
     return bond
 
 
-def dag_dict(graphs_dict_list):
+def dag_creator(graphs_dict_list):
     final_graphs_dict = {}
     sor_ordered_list = {}
     centers = {}
@@ -152,16 +152,16 @@ def to_dag(G, plot=False):
     return center_dict[min(center_dict.keys())]
 
 
-def getDvalue(Graph):
-    labelSizeX = 7
+def get_dvalue(Graph):
+    label_size_x = 7
     G = list(Graph.values())
-    maxM = -1
+    max_m = -1
     for g in G:
         for n in g.nodes():
-            maxM = (max(maxM, g.in_degree(n)))
+            max_m = (max(max_m, g.in_degree(n)))
             # Size of the node array
-        D = maxM + 1 + labelSizeX
-    return D, maxM
+        d = max_m + 1 + label_size_x
+    return d, max_m
 
 
 def create_graph_tensor(graphs, bias, max_m, d_value):
@@ -189,7 +189,7 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
     deepthdict_batch_label = torch.zeros(0)
     deepthdict_batch_tensor = {}
     deepthdict_batch_parent_list_sons = {}
-    # dummy_dict = {}
+    dummy_dict = {}
 
     for molecule in center_node:
         deepthdict_batch_label = torch.cat([deepthdict_batch_label, label[molecule]])
@@ -205,7 +205,6 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
                 deepthdict_batch_tensor[depth] = graph_tensor[molecule][current]
                 deepthdict_batch_parent_list_sons[depth] = [len(sor_ordered_list[molecule][current])]
             queue.extend(sor_ordered_list[molecule][current])
-    dummy_dict = {}
     for depth in reversed(range(1, len(
             deepthdict_batch_parent_list_sons))):  # non considero il primo livello in quanto sicuramente non ha figli
         node_of_next_level = len(deepthdict_batch_parent_list_sons[depth - 1])
@@ -218,7 +217,7 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
             for son in range(node):
                 dummy[vert_temp][oriz] = 1
                 oriz += 1
-            vert_temp = +1
+                vert_temp += 1
             vert += d_value
         dummy_dict[depth - 1] = dummy.to_sparse().to(device)
 

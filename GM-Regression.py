@@ -1,18 +1,18 @@
 import argparse
 import os
 
-from src.models.predict_model import test
-from src.visualization.visualize import report_stamp, plot_rmse
-
-# imposto come path root quella del progetto
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-import torch.nn as nn
 import torch
+import torch.nn as nn
 
 from src.Net.FNN_GM_Net import RegressionGm, save_model, laod_model
-from src.data.loadDataset import load_true_value, dag_dict, dictOfFNameList, getDvalue, create_graph_tensor, \
+from src.data.loadDataset import load_true_value, dag_creator, dict_of_file_name_list, get_dvalue, create_graph_tensor, \
     dataset_loader
+from src.models.predict_model import test
 from src.models.train_model import train
+from src.visualization.visualize import report_stamp, plot_rmse
+
+# set the path of the project as root path
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', "--device", default='cpu', help="device to use(GPU or CPU(defualt))")
@@ -41,15 +41,16 @@ bias = int(args.bias)
 device = torch.device(args.device)
 print(args)
 
+
 datasetFilenameTrain, labelTrain = load_true_value(rootDir, trainFile)
-graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_dict(
-    dictOfFNameList(rootDir, datasetFilenameTrain))
-DTrain, maxMTrain = getDvalue(graphTrain)
+graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_creator(
+    dict_of_file_name_list(rootDir, datasetFilenameTrain))
+DTrain, maxMTrain = get_dvalue(graphTrain)
 
 datasetFilenameTest, labelTest = load_true_value(rootDir, testFile)
-graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_dict(
-    dictOfFNameList(rootDir, datasetFilenameTest))
-DTest, maxMTest = getDvalue(graphTest)
+graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_creator(
+    dict_of_file_name_list(rootDir, datasetFilenameTest))
+DTest, maxMTest = get_dvalue(graphTest)
 
 d_value = max(DTrain, DTest)
 maxMValue = max(maxMTrain, maxMTest)
@@ -69,7 +70,7 @@ output_size = 1  # The number of output classes. In this case 1
 net = RegressionGm(input_size, hidden_size, output_size).to(device)
 
 criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(net.parameters(),lr=learning_rate)
+optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
 RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
 predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
@@ -82,9 +83,9 @@ report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs,
              graphTrain,
              graphTest, net, criterion, training_time)
 
-print(load,save)
+print(load, save)
 if save:
-    save_model(net,"modelloXXX.pth")
+    save_model(net, "modelloXXX.pth")
 if load:
-    model=laod_model(net,"modelloXXX.pth")
+    model = laod_model(net, "modelloXXX.pth")
     print(model)
