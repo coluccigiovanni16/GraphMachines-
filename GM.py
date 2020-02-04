@@ -2,9 +2,8 @@ import argparse
 import os
 
 from src.models.predict_model import test
-from src.visualization.visualize import plotRmse
-
-# imposto come
+from src.visualization.visualize import report_stamp, plotRmse
+# imposto come path root quella del progetto
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import torch.nn as nn
 import torch
@@ -80,13 +79,14 @@ output_size = 1  # The number of output classes. In this case 1
 net = RegressionGm(input_size, hidden_size, output_size).to(device)
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(net.parameters())
-# optimizer = torch.optim.RMSprop(net.parameters())
 
 RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
 predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
-plotRmse(true, predicted, RMSETrain, RMSETest, testFile)
-# fileName = './REPORT/' + testFile + 'ReportGenerale.txt'
-# fileNameRMSE = './REPORT/' + testFile + 'ReportRMSE.txt'
-# report_stamp(fileName, fileNameRMSE, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
-#              graphTrain,
-#              graphTest, net, criterion, training_time)
+plotRmse(true, predicted, RMSETrain, RMSETest, testFile) #funziona
+
+fileName = './reports/REPORT/' + testFile + 'ReportGenerale.txt'
+fileNameRMSE = './reports/REPORT/' + testFile + 'ReportRMSE.txt'
+
+report_stamp(fileName, fileNameRMSE, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
+             graphTrain,
+             graphTest, net, criterion, training_time)
