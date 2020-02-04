@@ -1,10 +1,9 @@
 import argparse
-import os
 
-abspath = os.path.abspath(__file__)
-dname = os.path.dirname(abspath)
-print(dname)
-os.chdir(dname)
+from src.models.predict_model import test
+from src.visualization.visualize import plotRmse
+
+
 import torch.nn as nn
 import torch
 
@@ -13,14 +12,13 @@ from src.data.loadDataset import load_true_value, dag_dict, dictOfFNameList, get
     dataset_loader
 from src.models.train_model import train
 
-#
-# i=0
-# num_epochs = 100
-# bias = 1
-# rootDir = '/home/elbarto91/provapipEnv/graphmachines/data/processed/Alkane/'
-# trainFile = "trainset_" + str(i) + ".ds"
-# testFile = "testset_" + str(i) + ".ds"
-# device = torch.device("cpu")
+i = 0
+num_epochs = 100
+bias = 1
+rootDir = '/home/elbarto91/provapipEnv/graphmachines/data/processed/Alkane/'
+trainFile = "trainset_" + str(i) + ".ds"
+testFile = "testset_" + str(i) + ".ds"
+device = torch.device("cpu")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', "--device", default='cpu', help="device to use(GPU or CPU(defualt))")
@@ -62,29 +60,32 @@ graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_dict(
     dictOfFNameList(rootDir, datasetFilenameTest))
 DTest, maxMTest = getDvalue(graphTest)
 
-DValue = max(DTrain, DTest)
+d_value = max(DTrain, DTest)
 maxMValue = max(maxMTrain, maxMTest)
 
-graphTensorTrain = create_graph_tensor(graphTrain, bias, maxMValue, DValue)
+graphTensorTrain = create_graph_tensor(graphTrain, bias, maxMValue, d_value)
 dataSetTrain = dataset_loader(depthNodesTrain, centerNodeTrain, sorOrderedListTrain, graphTensorTrain, labelTrain,
-                              DValue, device)
+                              d_value, device)
 
-graphTensorTest = create_graph_tensor(graphTest, bias, maxMValue, DValue)
-dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest, DValue,
+graphTensorTest = create_graph_tensor(graphTest, bias, maxMValue, d_value)
+dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest, d_value,
                              device)
 
-input_size = DValue  # The image size = 28 x 28 = 784
+input_size = d_value  # The features size (our case is 12)
 hidden_size = 4  # The number of nodes at the hidden layer
-output_size = 1  # The number of output classes. In this case, from 0 to 9
+output_size = 1  # The number of output classes. In this case 1
 
 net = RegressionGm(input_size, hidden_size, output_size).to(device)
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(net.parameters())
 # optimizer = torch.optim.RMSprop(net.parameters())
 
-RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, DValue, criterion)
-# predicted, true, avg_error = test(net, dataSetTest, d_value,criterion)
-# plotRmse(true, predicted, RMSETrain, RMSETest)
+RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
+predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
+
+
+plotRmse(true, predicted, RMSETrain, RMSETest, testFile) #funziona
+
 # fileName = './REPORT/' + testFile + 'ReportGenerale.txt'
 # fileNameRMSE = './REPORT/' + testFile + 'ReportRMSE.txt'
 # report_stamp(fileName, fileNameRMSE, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,

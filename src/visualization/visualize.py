@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 
 
@@ -9,11 +11,11 @@ def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, nu
     file.write('\nLISTA TEST FILE  \n')
     file.write(str(graph_set_train.keys()))
     file.write(
-        '----------------------------------------------------------------------------------------------------------\n')
+        '\n' + '-' * 500 + '\n')
     file.write('\nLISTA VALIDATION FILE  \n')
     file.write(str(graph_set_test.keys()))
     file.write(
-        '----------------------------------------------------------------------------------------------------------\n')
+        '\n' + '-' * 500 + '\n')
     file.write("\nOur model: \n\n")
     file.write(str(net))
     file.write('\n')
@@ -47,7 +49,7 @@ def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, nu
         file.write("\t")
         file.write(str(optimizer.state_dict()[var_name]))
     file.write(
-        '\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+        '\n' + '+' * 500 + '\n')
     file.write('Average Error Test Dataset= ')
     file.write(str(avg_error))
     file.write('\nRMSE Train Dataset = ')
@@ -57,7 +59,7 @@ def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, nu
     file.write('\nNumber of epochs ')
     file.write(str(num_epochs))
     file.write(
-        '\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
+        '\n' + '+' * 500 + '\n')
     for i in range(len(true)):  # close the figure window
         file.write('pred =')
         file.write(str(predicted[i]))
@@ -100,7 +102,7 @@ def rmse_stamp(file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, opt
     file.close()
 
 
-def plotRmse(true, predicted, RMSETrain, RMSETest):
+def plotRmse(true, predicted, RMSETrain, RMSETest,testFile):
     # plotting points as a scatter plot 0
     plt.scatter(true, predicted, label="C", color="green", marker="*", s=30)
 
@@ -109,11 +111,14 @@ def plotRmse(true, predicted, RMSETrain, RMSETest):
     # frequency label
     plt.ylabel('Predicted')
     # plot title  third_tensor = torch.cat((first_tensor, second_tensor), 0)
-    plt.title('Regression of Alkan')
+    plt.title('Regression')
     # showing legend
     plt.legend()
     plt.grid()
-    plt.savefig('./REPORT/' + testFile + "PredReal.png")
+    directory='reports/REPORT'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    plt.savefig('./'+directory+'/' + testFile + "PredReal.png")
     # function to show the plot retain_graph=True
     plt.show()
     plt.close()  # close the figure window
@@ -122,6 +127,6 @@ def plotRmse(true, predicted, RMSETrain, RMSETest):
     plt.plot(RMSETest, color="red", label='RMSETest')
     plt.legend()
     plt.grid()
-    plt.title('RMSE of Alkan')
-    plt.savefig('./REPORT/' + testFile + "RMSE.png")
+    plt.title('RMSE')
+    plt.savefig('./'+directory+'/'  + testFile + "RMSE.png")
     plt.show()
