@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 
 
@@ -73,3 +74,13 @@ class ClassificationGm(nn.Module):
             out = self.Drop(out)
             out = self.fc2Root(out)
             return out
+
+
+def saveModel(model, path):
+    # use .pth or .pt extension  
+    torch.save(model.state_dict(), path)
+
+
+def laodModel(model, path):
+    model.load_state_dict(torch.load(path))
+    return model

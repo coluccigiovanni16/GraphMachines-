@@ -3,6 +3,7 @@ import os
 
 from src.models.predict_model import test
 from src.visualization.visualize import report_stamp, plotRmse
+
 # imposto come path root quella del progetto
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import torch.nn as nn
@@ -82,7 +83,7 @@ optimizer = torch.optim.Adam(net.parameters())
 
 RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
 predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
-plotRmse(true, predicted, RMSETrain, RMSETest, testFile) #funziona
+plotRmse(true, predicted, RMSETrain, RMSETest, testFile)  # funziona
 
 fileName = './reports/REPORT/' + testFile + 'ReportGenerale.txt'
 fileNameRMSE = './reports/REPORT/' + testFile + 'ReportRMSE.txt'
