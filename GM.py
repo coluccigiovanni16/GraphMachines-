@@ -1,9 +1,11 @@
 import argparse
+import os
 
 from src.models.predict_model import test
 from src.visualization.visualize import plotRmse
 
-
+# imposto come
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import torch.nn as nn
 import torch
 
@@ -13,7 +15,7 @@ from src.data.loadDataset import load_true_value, dag_dict, dictOfFNameList, get
 from src.models.train_model import train
 
 i = 0
-num_epochs = 100
+num_epochs = 10000
 bias = 1
 rootDir = '/home/elbarto91/provapipEnv/graphmachines/data/processed/Alkane/'
 trainFile = "trainset_" + str(i) + ".ds"
@@ -82,10 +84,7 @@ optimizer = torch.optim.Adam(net.parameters())
 
 RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
 predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
-
-
-plotRmse(true, predicted, RMSETrain, RMSETest, testFile) #funziona
-
+plotRmse(true, predicted, RMSETrain, RMSETest, testFile)
 # fileName = './REPORT/' + testFile + 'ReportGenerale.txt'
 # fileNameRMSE = './REPORT/' + testFile + 'ReportRMSE.txt'
 # report_stamp(fileName, fileNameRMSE, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
