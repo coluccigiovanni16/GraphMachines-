@@ -76,11 +76,11 @@ class ClassificationGm(nn.Module):
             return out
 
 
-def saveModel(model, modelName):
+def save_model(model, model_name):
     # use .pth or .pt extension
-    torch.save(model.state_dict(), 'models/' + modelName)
+    torch.save(model.state_dict(), 'models/' + model_name)
 
 
-def laodModel(model, path):
-    model.load_state_dict(torch.load(path))
+def laod_model(model, path):
+    model.load_state_dict(torch.load('models/'+path))
     return model

@@ -9,7 +9,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import torch.nn as nn
 import torch
 
-from src.Net.FNN_GM_Net import RegressionGm
+from src.Net.FNN_GM_Net import RegressionGm, save_model, laod_model
 from src.data.loadDataset import load_true_value, dag_dict, dictOfFNameList, getDvalue, create_graph_tensor, \
     dataset_loader
 from src.models.train_model import train
@@ -23,12 +23,15 @@ parser.add_argument('-r', "--report", default=False, help="save result in a repo
 parser.add_argument('-root', "--rootDir", default='', help="directory of file")
 parser.add_argument('-trf', "--trainFile", default='', help="train")
 parser.add_argument('-tef', "--testFile", default='', help="test")
+parser.add_argument('-s', "--save", default=False, help="True if you want to save the model")
+parser.add_argument('-l', "--load", default=False, help="True if you want to load the model")
 parser.add_argument('-b', "--bias", default=1, help="bias value")
 parser.add_argument('-rn', "--reportName", default='', help="base name for the report's folder ")
 args = parser.parse_args()
 num_epochs = int(args.num_epochs)
 hidden_layer = int(args.hidden_layer_size)
-save = bool(args.report)
+save = bool(args.save)
+load = bool(args.load)
 learning_rate = float(args.learning_rate)
 rootDir = args.rootDir
 trainFile = args.trainFile
@@ -78,3 +81,10 @@ plot_rmse(true, predicted, RMSETrain, RMSETest, testFile, reportFolder)  # funzi
 report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
              graphTrain,
              graphTest, net, criterion, training_time)
+
+print(load,save)
+if save:
+    save_model(net,"modelloXXX.pth")
+if load:
+    model=laod_model(net,"modelloXXX.pth")
+    print(model)
