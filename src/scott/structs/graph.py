@@ -1,21 +1,18 @@
 # from __future__ import annotations
 
-from .node import Node, Virtual_Node, Mirror_Node
-from .edge import Edge
-from .tree import Tree, def_tree_fn
-
-import json
-import pprint
-
-import re
-import math
 import copy
 import hashlib
+import json
+import pprint
 import random
+import re
+from typing import Callable, List, Tuple
+
+from .edge import Edge
+from .node import Node, Virtual_Node, Mirror_Node
+from .tree import Tree, def_tree_fn
 
 # import numpy as np
-
-from typing import Callable, List, Tuple
 
 # Types aliases
 Node_Callback = Callable[[Node, Node, str], bool]

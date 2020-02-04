@@ -1,7 +1,6 @@
 import math
 
 import torch
-import torch.nn as nn
 
 
 def test(net, data_set_train, d_value, criterion, rmse=False):

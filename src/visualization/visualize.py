@@ -1,10 +1,13 @@
 import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 
 
-def report_stamp(file_name, file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, true, predicted, optimizer,
+def report_stamp(report_folder, dataset_name, avg_error, rmse_train, rmse_test, num_epochs, true, predicted, optimizer,
                  graph_set_train, graph_set_test, net, criterion, training_time):
+    file_name = report_folder + '/' + dataset_name + '_ReportGenerale.txt'
+    file_name_rmse = report_folder + '/' + dataset_name + '_ReportRMSE.txt'
     file = open(file_name, 'w+')
     file.write(
         '\n+++++++++++++++++++++++++++++++++++REPORT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n')
@@ -102,7 +105,9 @@ def rmse_stamp(file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, opt
     file.close()
 
 
-def plotRmse(true, predicted, RMSETrain, RMSETest,testFile):
+def plot_rmse(true, predicted, rmse_train, RMSETest, datasetName, reportFolder):
+    Path(reportFolder).mkdir(parents=True, exist_ok=True)
+
     # plotting points as a scatter plot 0
     plt.scatter(true, predicted, label="C", color="green", marker="*", s=30)
 
@@ -115,18 +120,15 @@ def plotRmse(true, predicted, RMSETrain, RMSETest,testFile):
     # showing legend
     plt.legend()
     plt.grid()
-    directory='reports/REPORT'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-    plt.savefig('./'+directory+'/' + testFile + "PredReal.png")
+    plt.savefig(reportFolder + '/' + datasetName + "_PredReal.png")
     # function to show the plot retain_graph=True
     plt.show()
     plt.close()  # close the figure window
     # plotting points as a scatter pltorch.autograd.backwardot
-    plt.plot(RMSETrain, color="blue", label='RMSETrain')
+    plt.plot(rmse_train, color="blue", label='rmse_train')
     plt.plot(RMSETest, color="red", label='RMSETest')
     plt.legend()
     plt.grid()
     plt.title('RMSE')
-    plt.savefig('./'+directory+'/'  + testFile + "RMSE.png")
+    plt.savefig(reportFolder + '/' + datasetName + "_RMSE.png")
     plt.show()

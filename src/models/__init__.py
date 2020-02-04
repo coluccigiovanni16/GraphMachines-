@@ -1,3 +1,3 @@
-__all__ = ['predict_model','train_model']
+__all__ = ['predict_model', 'train_model']
 
 from . import *

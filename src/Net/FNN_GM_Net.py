@@ -76,9 +76,9 @@ class ClassificationGm(nn.Module):
             return out
 
 
-def saveModel(model, path):
-    # use .pth or .pt extension  
-    torch.save(model.state_dict(), path)
+def saveModel(model, modelName):
+    # use .pth or .pt extension
+    torch.save(model.state_dict(), 'models/' + modelName)
 
 
 def laodModel(model, path):

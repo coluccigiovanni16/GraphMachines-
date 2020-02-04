@@ -198,7 +198,8 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
             current = queue.pop(0)
             depth = depth_nodes[molecule][current]
             if depth in deepthdict_batch_tensor.keys():
-                deepthdict_batch_tensor[depth] = torch.cat([deepthdict_batch_tensor[depth], graph_tensor[molecule][current]],dim=0)
+                deepthdict_batch_tensor[depth] = torch.cat(
+                    [deepthdict_batch_tensor[depth], graph_tensor[molecule][current]], dim=0)
                 deepthdict_batch_parent_list_sons[depth].append(len(sor_ordered_list[molecule][current]))
             else:
                 deepthdict_batch_tensor[depth] = graph_tensor[molecule][current]

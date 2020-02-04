@@ -2,7 +2,6 @@ import math
 import time
 
 import torch
-import torch.nn as nn
 
 from .predict_model import test
 
@@ -28,7 +27,7 @@ def train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, DValue, criteri
         if (epoch + 1) % (int(num_epochs / 10)) == 0:  # print every (num_epochs/10) epochs --> total 10 print
             print('TRAIN SET \nEpoch [%d/%d],  \nRMSE: %.5f \n '
                   % (epoch + 1, num_epochs, math.sqrt(losses)))
-            RMSETest.append(test(net, dataSetTest, DValue,criterion, rmse=True))
+            RMSETest.append(test(net, dataSetTest, DValue, criterion, rmse=True))
             RMSETrain.append(math.sqrt(losses))
 
     #             print('-------------------------------------------------------------------------------------\n\n')
@@ -39,5 +38,5 @@ def train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, DValue, criteri
     print('FINE TRAINING')
     print('\n+++++++++++++++++++++++++++++++++++++++\n\n')
     print('RMSETest', RMSETest)
-    print('RMSETrain', RMSETrain)
+    print('rmse_train', RMSETrain)
     return RMSETrain, RMSETest, training_time
