@@ -41,7 +41,6 @@ bias = int(args.bias)
 device = torch.device(args.device)
 print(args)
 
-
 datasetFilenameTrain, labelTrain = load_true_value(rootDir, trainFile)
 graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_creator(
     dict_of_file_name_list(rootDir, datasetFilenameTrain))
@@ -85,7 +84,7 @@ report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs,
 
 print(load, save)
 if save:
-    save_model(net, "modelloXXX.pth")
+    save_model(net, reportName , "/model_" + testFile + ".pth")
 if load:
-    model = laod_model(net, "modelloXXX.pth")
+    model = laod_model(net, reportName + "/model_" + testFile + ".pth")
     print(model)

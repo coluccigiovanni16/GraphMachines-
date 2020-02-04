@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from pathlib import Path
 
 
 class RegressionGm(nn.Module):
@@ -76,11 +77,12 @@ class ClassificationGm(nn.Module):
             return out
 
 
-def save_model(model, model_name):
+def save_model(model, reportName, model_name):
     # use .pth or .pt extension
-    torch.save(model.state_dict(), 'models/' + model_name)
+    Path('models/'+reportName).mkdir(parents=True, exist_ok=True)
+    torch.save(model.state_dict(), 'models/'+reportName + model_name)
 
 
 def laod_model(model, path):
-    model.load_state_dict(torch.load('models/'+path))
+    model.load_state_dict(torch.load('models/' + path))
     return model
