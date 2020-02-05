@@ -38,7 +38,7 @@ def train_regression(net, data_set_train, data_set_test, optimizer, num_epochs, 
 
     end = time.time()
     training_time = end - start
-    print('Tempo di training ', training_time)
+    print('Tempo di training ', training_time +" seconds")
     print('FINE TRAINING')
     print('\n+++++++++++++++++++++++++++++++++++++++\n\n')
     print('rmse_test', rmse_test)
