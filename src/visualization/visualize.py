@@ -3,7 +3,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
-# save in a text file some info regarding the train/prediction task
+# save in a text file some info regarding the train_regression/prediction task
 def report_stamp(report_folder, dataset_name, avg_error, rmse_train, rmse_test, num_epochs, true, predicted, optimizer,
                  graph_set_train, graph_set_test, net, criterion, training_time):
     file_name = report_folder + '/' + dataset_name + '_ReportGenerale.txt'
@@ -78,7 +78,7 @@ def report_stamp(report_folder, dataset_name, avg_error, rmse_train, rmse_test, 
                training_time)
 
 
-# save in a text file some info regarding the train/prediction task,more simple,use only some line of info
+# save in a text file some info regarding the train_regression/prediction task,more simple,use only some line of info
 def rmse_stamp(file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, optimizer, criterion, training_time):
     file = open(file_name_rmse, 'w+')
     file.write(
@@ -106,7 +106,7 @@ def rmse_stamp(file_name_rmse, avg_error, rmse_train, rmse_test, num_epochs, opt
     file.close()
 
 
-# plot and save image regarding the rmse value during trainig regarding train and test compared
+# plot and save image regarding the rmse value during trainig regarding train_regression and test compared
 def plot_rmse(true, predicted, rmse_train, rmse_test, dataset_name, report_folder):
     Path(report_folder).mkdir(parents=True, exist_ok=True)
 

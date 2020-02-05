@@ -33,7 +33,7 @@ var/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit predict / coverage reports
+# Unit predict_regression / coverage reports
 htmlcov/
 .tox/
 .coverage

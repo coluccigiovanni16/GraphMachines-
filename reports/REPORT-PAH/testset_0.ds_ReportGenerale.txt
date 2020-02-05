@@ -1,0 +1,160 @@
+
++++++++++++++++++++++++++++++++++++REPORT+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+LISTA TEST FILE  
+dict_keys(['naphthalene.ct', 'anthracene.ct', 'phenanthrene.ct', 'naphthacene.ct', 'benzo[a]anthracene.ct', 'chrysene.ct', 'benzo[c]phenanthrene.ct', 'pyrene.ct', 'triphenylene.ct', 'dibenz[a,h]anthracene.ct', 'dibenz[a,j]anthracene.ct', 'benzo[a]pyrene.ct', 'benzo[c]chrysene.ct', 'benzo[g]chrysene.ct', 'benzo[a]naphthacene.ct', 'pentaphene.ct', 'dibenz[a,c]anthracene.ct', 'pentacene.ct', 'dibenzo[c,g]phenanthrene.ct', 'picene.ct', 'benzo[b]chrysene.ct', 'dibenzo[b,g]phenanthrene.ct', 'perylene.ct', 'anthanthrene.ct', 'naphtho[1,2-b]triphenylene.ct', 'dibenzo[e,l]pyrene.ct', 'dibenzo[a,e]pyrene.ct', 'anthra[1,2-a]anthracene.ct', 'dibenzo[b,k]chrysene.ct', 'naphtho(2,3-a)pyrene.ct', 'benzo[c]pentaphene.ct', 'dibenzo[a,l]naphthacene.ct', 'dibenzo[a,j]naphthacene.ct', 'dibenzo[a,l]pyrene.ct', 'dibenzo[a,h]pyrene.ct', 'dibenzo[c,i]pyrene.ct', '1-methylbenz[a]anthracene.ct', '2-methylbenz[a]anthracene.ct', '4-methylbenz[a]anthracene.ct', '5-methylbenz[a]anthracene.ct', '6-methylbenz[a]anthracene.ct', '7-methylbenz[a]anthracene.ct', '8-methylbenz[a]anthracene.ct', '9-methylbenz[a]anthracene.ct', '11-methylbenz[a]anthracene.ct', '12-methylbenz[a]anthracene.ct', '1,12-dimethylbenz[a]anthracene.ct', '7,12-dimethylbenz[a]anthracene.ct', '6,12-dimethylbenz[a]anthracene.ct', '6,8-dimethylbenz[a]anthracene.ct', '6,8,12-trimethylbenz[a]anthracene.ct', '1-methylchrysene.ct', '4-methylchrysene.ct', '5-methylchrysene.ct', '6-methylchrysene.ct', '1-methylbenzo[c]phenanthrene.ct', '3-methylbenzo[c]phenanthrene.ct', '4-methylbenzo[c]phenanthrene.ct', '5-methylbenzo[c]phenanthrene.ct', '6-methylbenzo[c]phenanthrene.ct', '5,8-dimethylbenzo[c]phenanthrene.ct', '1-methylpyrene.ct', '2-methylpyrene.ct', '4-methylpyrene.ct', '1-methylbenzo[a]pyrene.ct', '3-methylbenzo[a]pyrene.ct', '4-methylbenzo[a]pyrene.ct', '5-methylbenzo[a]pyrene.ct', '6-methylbenzo[a]pyrene.ct', '7-methylbenzo[a]pyrene.ct', '11-methylbenzo[a]pyrene.ct', '12-methylbenzo[a]pyrene.ct', '7,10-dimethylbenzo[a]pyrene.ct', '4,5-dimethylbenzo[a]pyrene.ct', '1,2-dimethylbenzo[a]pyrene.ct', '2,3-dimethylbenzo[a]pyrene.ct', '3,12-dimethylbenzo[a]pyrene.ct', '1,4-dimethylbenzo[a]pyrene.ct', '3,6-dimethylbenzo[a]pyrene.ct', '6-methylanthanthrene.ct', '6,12-dimethylanthanthrene.ct', '9,10-dimethylanthracene.ct', 'coronene.ct', 'benzo[g,h,i]perylene.ct'])
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LISTA VALIDATION FILE  
+dict_keys(['2-methylbenzo[c]phenanthrene.ct', '3-methylbenz[a]anthracene.ct', 'tribenzo[a,e,i]pyrene.ct', '1,3-dimethylbenzo[a]pyrene.ct', '8-methylbenzo[a]pyrene.ct', '10-methylbenzo[a]pyrene.ct', '10-methylbenz[a]anthracene.ct', '1,6-dimethylbenzo[a]pyrene.ct', '2-methylbenzo[a]pyrene.ct', 'benzo[e]pyrene.ct'])
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Our model: 
+
+ClassificationGm(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (Relu): ReLU()
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (Drop): Dropout(p=0.15, inplace=False)
+  (ReluRoot): ReLU()
+)
+Printing children
+------------------------------[Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), ReLU(), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), Dropout(p=0.15, inplace=False), ReLU()]
+
+Printing Modules
+------------------------------[ClassificationGm(
+  (fc1): Linear(in_features=12, out_features=4, bias=False)
+  (fc2): Linear(in_features=4, out_features=1, bias=False)
+  (Relu): ReLU()
+  (fc1Root): Linear(in_features=12, out_features=4, bias=False)
+  (fc2Root): Linear(in_features=4, out_features=1, bias=False)
+  (Drop): Dropout(p=0.15, inplace=False)
+  (ReluRoot): ReLU()
+), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), ReLU(), Linear(in_features=12, out_features=4, bias=False), Linear(in_features=4, out_features=1, bias=False), Dropout(p=0.15, inplace=False), ReLU()]
+The state dict keys: 
+
+odict_keys(['fc1.weight', 'fc2.weight', 'fc1Root.weight', 'fc2Root.weight'])Models state_dict:fc1.weight	torch.Size([4, 12])fc2.weight	torch.Size([1, 4])fc1Root.weight	torch.Size([4, 12])fc2Root.weight	torch.Size([1, 4])OrderedDict([('fc1.weight', tensor([[ 0.0771, -0.0546,  0.2765, -0.2117, -0.4247,  0.1559,  0.1657,  0.4624,
+          0.8096, -0.1654, -0.4038,  0.0997],
+        [-0.0151, -0.2865, -0.1961, -0.3837, -0.4085, -0.1748, -1.0357, -0.3750,
+          0.1388, -0.0993,  0.1485,  0.0816],
+        [ 0.1848,  0.1473, -0.8171, -0.0184, -0.6198,  0.2228,  0.2367, -0.2544,
+         -0.0416,  0.0465,  0.2077, -0.4501],
+        [ 0.2075,  0.0438,  0.4315, -0.0517, -0.4231, -0.2354, -0.0654, -0.2659,
+         -0.1689, -0.1365, -0.2644, -0.0682]])), ('fc2.weight', tensor([[ 0.0829,  0.8871, -0.0976, -0.5895]])), ('fc1Root.weight', tensor([[-0.6591, -1.0023, -0.3957, -0.5258,  0.1749,  0.0024, -0.0376,  0.1347,
+          0.4632,  0.3840,  0.3753,  0.2355],
+        [ 0.1570, -0.5487, -0.0079, -0.7237,  0.1551, -0.2038, -0.1392,  0.1890,
+         -0.6116,  0.0841, -0.4170,  0.5787],
+        [-0.1143, -0.2462,  0.3697, -0.7970, -0.0500, -0.1153, -0.6818, -0.4275,
+         -0.4602, -1.2546,  0.7644,  0.1387],
+        [ 0.2248,  0.3929,  0.0391,  0.6848,  0.0762, -0.3235, -0.2532,  0.4203,
+         -0.7281, -0.0341,  0.4566,  0.5301]])), ('fc2Root.weight', tensor([[-0.1713, -0.3659,  0.0059, -0.9182]]))])
+---------------plt.close(fig)    # close the figure window-------------------------------------------------------------------------------------------
+
+ Optimizer's state_dict:
+CRITERION = BCEWithLogitsLoss()
+OPTIMIZER = Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0
+)
+Tempo di training 0.4142875671386719
+
+
+state	{140592438438080: {'step': 100, 'exp_avg': tensor([[-2.3277e-03,  4.6554e-05, -6.5704e-07,  0.0000e+00,  0.0000e+00,
+         -2.3277e-03,  3.4695e-05,  3.4695e-05,  3.4695e-05, -8.7208e-04,
+          3.4695e-05, -1.4836e-03],
+        [ 7.4847e-03,  1.7756e-05,  1.1538e-06,  0.0000e+00,  0.0000e+00,
+          7.4847e-03,  0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,
+          7.4847e-03,  7.7418e-03],
+        [ 9.4559e-04, -1.0217e-04, -2.2185e-05,  0.0000e+00,  0.0000e+00,
+          9.4559e-04, -3.9946e-05, -3.9946e-05, -3.9946e-05,  1.5018e-03,
+         -5.6666e-04, -5.6816e-04],
+        [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,
+          0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,
+          0.0000e+00,  0.0000e+00]]), 'exp_avg_sq': tensor([[1.4835e-07, 6.0469e-11, 2.0845e-11, 0.0000e+00, 0.0000e+00, 1.4835e-07,
+         6.1643e-11, 6.1643e-11, 6.1643e-11, 1.9234e-08, 6.1643e-11, 8.2570e-08],
+        [1.0823e-05, 9.3911e-08, 9.2412e-12, 0.0000e+00, 0.0000e+00, 1.0823e-05,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 1.0823e-05, 1.1019e-05],
+        [4.8160e-06, 2.1168e-08, 2.7463e-09, 0.0000e+00, 0.0000e+00, 4.8160e-06,
+         3.5884e-10, 3.5884e-10, 3.5884e-10, 6.8613e-07, 4.2643e-07, 2.1711e-06],
+        [0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00]])}, 140592438439040: {'step': 100, 'exp_avg': tensor([[-0.0059,  0.0006, -0.0061,  0.0000]]), 'exp_avg_sq': tensor([[1.5662e-06, 1.0590e-07, 2.5318e-05, 0.0000e+00]])}, 140592438436960: {'step': 100, 'exp_avg': tensor([[ 5.0120e-09, -6.6515e-10, -6.7438e-10, -6.6963e-10,  0.0000e+00,
+          5.0120e-09,  0.0000e+00,  0.0000e+00,  0.0000e+00,  5.0120e-09,
+          0.0000e+00,  0.0000e+00],
+        [ 2.2121e-02,  9.1166e-04, -5.5250e-04, -1.6417e-03, -1.0687e-04,
+          2.2121e-02,  0.0000e+00,  0.0000e+00,  0.0000e+00,  2.2121e-02,
+          0.0000e+00,  0.0000e+00],
+        [ 0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,
+          0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,  0.0000e+00,
+          0.0000e+00,  0.0000e+00],
+        [ 2.2793e-04,  1.5259e-05, -1.7907e-05,  2.6658e-05,  0.0000e+00,
+          2.2793e-04,  0.0000e+00,  0.0000e+00,  0.0000e+00,  2.2793e-04,
+          0.0000e+00,  0.0000e+00]]), 'exp_avg_sq': tensor([[1.7172e-09, 3.0244e-11, 3.1090e-11, 3.0653e-11, 0.0000e+00, 1.7172e-09,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 1.7172e-09, 0.0000e+00, 0.0000e+00],
+        [1.9405e-04, 5.7805e-08, 9.6177e-07, 7.8109e-07, 5.0249e-09, 1.9405e-04,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 1.9405e-04, 0.0000e+00, 0.0000e+00],
+        [0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+        [5.8720e-06, 1.5925e-08, 3.6147e-08, 4.2428e-08, 0.0000e+00, 5.8720e-06,
+         0.0000e+00, 0.0000e+00, 0.0000e+00, 5.8720e-06, 0.0000e+00, 0.0000e+00]])}, 140592438435920: {'step': 100, 'exp_avg': tensor([[-5.5119e-11, -5.1772e-03,  0.0000e+00, -1.5657e-06]]), 'exp_avg_sq': tensor([[2.0769e-13, 6.6131e-05, 0.0000e+00, 3.5908e-10]])}}param_groups	[{'lr': 0.001, 'betas': (0.9, 0.999), 'eps': 1e-08, 'weight_decay': 0, 'amsgrad': False, 'params': [140592438438080, 140592438439040, 140592438436960, 140592438435920]}]
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Average Error Test Dataset= 0
+RMSE Train Dataset = [tensor(0.6944, grad_fn=<BinaryCrossEntropyWithLogitsBackward>)]
+RMSE Test Dataset = [0.8350679384792087]
+Number of epochs 100
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+pred =0.0
+true = tensor([1.])
+difference = tensor([1.])
+
+
+pred =0.0
+true = tensor([0.])
+difference = tensor([0.])
+
+
+pred =0.0
+true = tensor([1.])
+difference = tensor([1.])
+
+
+pred =-0.021660689264535904
+true = tensor([1.])
+difference = tensor([1.0217])
+
+
+pred =0.0
+true = tensor([0.])
+difference = tensor([0.])
+
+
+pred =-0.023730382323265076
+true = tensor([1.])
+difference = tensor([1.0237])
+
+
+pred =0.0
+true = tensor([1.])
+difference = tensor([1.])
+
+
+pred =0.0
+true = tensor([1.])
+difference = tensor([1.])
+
+
+pred =-0.013896348886191845
+true = tensor([1.])
+difference = tensor([1.0139])
+
+
+pred =-0.029917718842625618
+true = tensor([1.])
+difference = tensor([1.0299])
+
+

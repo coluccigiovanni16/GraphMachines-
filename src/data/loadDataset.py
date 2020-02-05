@@ -53,7 +53,7 @@ def molecule_to_networkxGraph(filename):
 
 
 # load true value using basepath and testset filename
-def load_true_value(base, filename_path):
+def load_true_value_regression(base, filename_path):
     y = {}
     dataset_name = []
     filename_path = base + filename_path
@@ -69,6 +69,27 @@ def load_true_value(base, filename_path):
     # close the pointer to that file
     file_handle.close()
     return dataset_name, y
+
+
+def load_true_value_classification(base, filenamepath):
+    Y = {}
+    datasetname = []
+    filenamepath = base + filenamepath
+    filehandle = open(filenamepath, 'r')
+    while True:
+        # read a single line
+        line = filehandle.readline()
+        if not line:
+            break
+        value = line.split(' ')
+        if (int(value[1])==-1):
+                Y[value[0]] = torch.Tensor([0])
+        if (int(value[1])==1):
+            Y[value[0]] = torch.Tensor([int(value[1])])
+        datasetname.append(base + value[0])
+    # close the pointer to that file
+    filehandle.close()
+    return datasetname, Y
 
 
 # iter the dataset list and return a dict with name of molecule file as key and the networkx DiGraph as value

@@ -40,7 +40,7 @@ Project Organization
     │   ├── scott       <- Scripts to turn raw data into newick format
     │   │   └── 
     │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
+    │   ├── models         <- Scripts to train_regression models and then use trained models to make
     │   │   │                 predictions
     │   │   ├── predict_model.py
     │   │   └── train_model.py

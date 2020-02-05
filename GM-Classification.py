@@ -4,11 +4,12 @@ import os
 import torch
 import torch.nn as nn
 
-from src.Net.FNN_GM_Net import RegressionGm, save_model, laod_model
-from src.data.loadDataset import load_true_value_regression, dag_creator, dict_of_file_name_list, get_d_value, create_graph_tensor, \
-    dataset_loader
-from src.models.predict_model import predict_regression
-from src.models.train_model import train_regression
+from src.Net.FNN_GM_Net import RegressionGm, save_model, laod_model, ClassificationGm
+from src.data.loadDataset import load_true_value_regression, dag_creator, dict_of_file_name_list, get_d_value, \
+    create_graph_tensor, \
+    dataset_loader, load_true_value_classification
+from src.models.predict_model import predict_regression, predict_classification
+from src.models.train_model import train_classification
 from src.visualization.visualize import report_stamp, plot_rmse
 
 # set the path of the project as root path
@@ -46,7 +47,7 @@ print(args)
 # TRAIN PART
 if trainFile and testFile:
     # load the true value of the trainset
-    datasetFilenameTrain, labelTrain = load_true_value_regression(rootDir, trainFile)
+    datasetFilenameTrain, labelTrain = load_true_value_classification(rootDir, trainFile)
     # datastructure used behind to construct the matrix (one for every depth)
     graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_creator(
         dict_of_file_name_list(rootDir, datasetFilenameTrain))
@@ -54,7 +55,7 @@ if trainFile and testFile:
     # d and m value used to constarct the fature array of every node(total size of array and size for the son's value)
     DTrain, maxMTrain = get_d_value(graphTrain)
 
-    datasetFilenameTest, labelTest = load_true_value_regression(rootDir, testFile)
+    datasetFilenameTest, labelTest = load_true_value_classification(rootDir, testFile)
     graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_creator(
         dict_of_file_name_list(rootDir, datasetFilenameTest))
     DTest, maxMTest = get_d_value(graphTest)
@@ -70,17 +71,17 @@ if trainFile and testFile:
     dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest,
                                  d_value, device)
 
-    del graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain, datasetFilenameTrain, labelTrain, \
-        datasetFilenameTest, labelTest, graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest
+    del sorOrderedListTrain, depthNodesTrain, centerNodeTrain, datasetFilenameTrain, labelTrain, \
+        datasetFilenameTest, labelTest, sorOrderedListTest, depthNodesTest, centerNodeTest
 
     # layer size of the neural network(FNN)
     input_size = d_value  # The features size (our case is 12)
     hidden_size = hidden_layer  # The number of nodes at the hidden layer
     output_size = 1  # The number of output classes. In this case 1
 
-    net = RegressionGm(input_size, hidden_size, output_size).to(device)
+    net = ClassificationGm(input_size, hidden_size, output_size).to(device)
 
-    criterion = nn.MSELoss()
+    criterion = nn.BCEWithLogitsLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
     # laod a model from disk
@@ -89,18 +90,16 @@ if trainFile and testFile:
         print("Model correctly laoded")
 
     # train_regression the NN
-    RMSETrain, RMSETest, training_time = train_regression(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value,
-                                                          criterion)
+    lossTrain, lossTest, training_time = train_classification(net, dataSetTrain, dataSetTest, optimizer, num_epochs,
+                                                              d_value, criterion)
     # predict_regression using NN and testset
-    predicted, true, avg_error = predict_regression(net, dataSetTest, d_value, criterion)
+    predicted, true, avg_error = predict_classification(net, dataSetTest, d_value, criterion)
 
     reportFolder = './reports/REPORT-' + reportName
 
     # PLOT + PRINT
-    plot_rmse(true, predicted, RMSETrain, RMSETest, testFile, reportFolder)  # funziona
-    report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
-                 graphTrain,
-                 graphTest, net, criterion, training_time)
+    report_stamp(reportFolder, testFile, avg_error, lossTrain, lossTest, num_epochs, true, predicted, optimizer,
+                 graphTrain, graphTest, net, criterion, training_time)
 
     # save the model trained
     if save:
@@ -118,7 +117,7 @@ elif testFile and load and modelPath and not trainFile:
     hidden_size = hidden_layer  # The number of nodes at the hidden layer
     output_size = 1  # The number of output classes. In this case 1
     model = RegressionGm(input_size, hidden_size, output_size).to(device)
-    criterion = nn.MSELoss()
+    criterion = nn.BCEWithLogitsLoss()
     net = laod_model(model, modelPath)
     print("Model correctly loaded")
 
@@ -131,4 +130,3 @@ elif testFile and load and modelPath and not trainFile:
                                  device)
     predicted, true, avg_error = predict_regression(net, dataSetTest, d_value, criterion)
     reportFolder = './reports/REPORT-' + reportName
-    plot_rmse(true, predicted, [], [], testFile, reportFolder)
