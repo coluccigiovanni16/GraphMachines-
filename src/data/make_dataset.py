@@ -5,12 +5,11 @@ import os
 import random
 import re
 import tarfile
+from collections import deque
 
 
 def main():
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
+
     command = "obabel -ict *.ct -osdf -m"  # command to trasform the .ct file int .sdf file
     folders = []
 
@@ -51,7 +50,6 @@ def main():
     for key in keys:
         shuffled_mol_dict[key] = mol_dict[key]
 
-    from collections import deque
     mol_file_name = deque(shuffled_mol_dict.keys())
     for i in range(10):
         mol_file_name = list(mol_file_name)

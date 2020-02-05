@@ -3,7 +3,7 @@ import math
 import torch
 
 
-def test(net, data_set_train, d_value, criterion, rmse=False):
+def predict(net, data_set_train, d_value, criterion, rmse=False):
     avg_error = 0
     with torch.no_grad():
         dummy_dict, deepthdict_batch_tensor, deepthdict_batch_label = data_set_train

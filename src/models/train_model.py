@@ -3,7 +3,7 @@ import time
 
 import torch
 
-from .predict_model import test
+from .predict_model import predict
 
 
 def train(net, data_set_train, data_set_test, optimizer, num_epochs, d_value, criterion):
@@ -26,7 +26,7 @@ def train(net, data_set_train, data_set_test, optimizer, num_epochs, d_value, cr
         if (epoch + 1) % (int(num_epochs / 10)) == 0:  # print every (num_epochs/10) epochs --> total 10 print
             print('TRAIN SET \nEpoch [%d/%d],  \nRMSE: %.5f \n '
                   % (epoch + 1, num_epochs, math.sqrt(losses)))
-            rmse_test.append(test(net, data_set_test, d_value, criterion, rmse=True))
+            rmse_test.append(predict(net, data_set_test, d_value, criterion, rmse=True))
             rmse_train.append(math.sqrt(losses))
 
     #             print('-------------------------------------------------------------------------------------\n\n')

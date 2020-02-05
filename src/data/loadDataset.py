@@ -9,31 +9,34 @@ import torch
 from ..scott import parse, canonize
 
 
+# parse a string from scott algorithm to a sequence of node->sons
 def parse_newick(newick_string):
     current_molecule_token = re.findall(r"([^:;,()\s]*)(?:\s*:\s*([\d.]+)\s*)?([,);])|(\S)", newick_string + ";")
 
-    def recurse(next_id=0, parent_id=-1):  # one node
+    def iter_node(next_id=0, parent_id=-1):  # one node
         current_id = next_id;
         children = []
         name, length, delimiter, character = current_molecule_token.pop(0)
         if character == "(":
             while character in "(,":
-                node, character, next_id = recurse(next_id + 1, current_id)
+                node, character, next_id = iter_node(next_id + 1, current_id)
                 children.append(node)
             name, length, delimiter, character = current_molecule_token.pop(0)
         return {"id": current_id, "name": name, "length": float(length) if length else None,
                 "parent_id": parent_id, "children": children}, delimiter, next_id
 
-    return recurse()[0]
+    return iter_node()[0]
 
 
-def molToNetworkx(filename):
+# have in input the path of the molecule in an sdf mode,and give in output a DAG graph
+def molecule_to_networkxGraph(filename):
     compounds = parse.from_sdf(
         file_path=filename, ignore_hydrogens=True)[0]
     simple_cgraph = str(canonize.to_cgraph(compounds))
     gr = [parse_newick(simple_cgraph)]
     mol = nx.DiGraph()
     node_dict = {}
+    # iter through the node
     for g in gr:
         node_dict[g["id"]] = g["name"]
         mol.add_node(g["id"])
@@ -49,8 +52,7 @@ def molToNetworkx(filename):
     return mol
 
 
-# %%
-
+# load true value using basepath and testset filename
 def load_true_value(base, filename_path):
     y = {}
     dataset_name = []
@@ -69,18 +71,18 @@ def load_true_value(base, filename_path):
     return dataset_name, y
 
 
+# iter the dataset list and return a dict with name of molecule file as key and the networkx DiGraph as value
 def dict_of_file_name_list(base, dataset_name):
     graphs_dict_list = {}
     # construct graphs from every single .ct file
     for filename in dataset_name:
-        graphs_dict_list[filename.replace(base, '')] = molToNetworkx(filename.replace(".ct", ".sdf"))
+        graphs_dict_list[filename.replace(base, '')] = molecule_to_networkxGraph(filename.replace(".ct", ".sdf"))
     return graphs_dict_list
 
 
+# return the sum of bond's weight of the edge in/out of the node in input
 def get_weight_sum(graph, node):
     bond = 0
-    #     print("in",graph.in_edges(node,data=True))
-    #     print("in",graph.out_edges(node,data=True))
     for (u, v, d) in graph.in_edges(node, data=True):
         bond = bond + d["weight"]
 
@@ -89,6 +91,12 @@ def get_weight_sum(graph, node):
     return bond
 
 
+# starting from the networkx graph it construct 4 dict, the name of molecule file as key and for a value:
+# final_graphs_dict -> digraph ,
+# sor_ordered_list  -> list of the son ordered in lexycographic manner
+# depth_nodes -> list of nodes for the several depth
+# centers -> the center of the DAG
+# also we add the attributes at every node, used after to construct the features vector
 def dag_creator(graphs_dict_list):
     final_graphs_dict = {}
     sor_ordered_list = {}
@@ -99,13 +107,16 @@ def dag_creator(graphs_dict_list):
     for g in graphs_dict_list:
         for node in graphs_dict_list[g]:
             atom = graphs_dict_list[g].nodes[node]["atom"]
+            # node attributes
             if atom in atoms:
                 attrs = {node: {'attrA1': float(atoms[atom][0]), 'attrA2': float(atoms[atom][1]),
                                 'attrA3': float(atoms[atom][2]), 'attrA4': float(atoms[atom][3])}}
             else:
+                # if it is a node added using the scott algo(with no label) we givi it the same attributes
                 attrs = {node: {'attrA1': 1, 'attrA2': 1, 'attrA3': 1, 'attrA4': 1}}
             nx.set_node_attributes(graphs_dict_list[g], attrs)
             bond = get_weight_sum(graphs_dict_list[g], node)
+            # bond attributes
             attrs = {
                 node: {'attrB1': bond_value[bond][0], 'attrB2': bond_value[bond][1], 'attrB3': bond_value[bond][2]}}
             nx.set_node_attributes(graphs_dict_list[g], attrs)
@@ -113,31 +124,21 @@ def dag_creator(graphs_dict_list):
     return final_graphs_dict, sor_ordered_list, depth_nodes, centers
 
 
-# %%
-
 def to_dag(G, plot=False):
     '''  docstring:
-    converte un grafo aciclico in un grafo dag
-    con i rami già diretti verso il centro.
-    Input : grafo indiretto da covertire
-    Output : grafo dag con grafico
+    converts an acyclic graph to a DAG
+    with branches yet directed towards the center.
+    Input: indirect graph to be converted
+    Output: DAG
     '''
     if plot:
         nx.draw(G, with_labels=True, with_attributes=True)
         plt.show()
     center_dict = {}
-    #     src = nx.center(G)
-    #     for center in src:
     graph_ordered_node_trav = {}
-    #         T = nx.dfs_tree(G, source=center)
-    #         G.remove_edges_from(list(G.edges()))
-    #         G = G.to_directed()
-    #         G.add_edges_from(list(T.edges()))
     center = [n for n, d in G.out_degree() if d == 0][0]
-    #     print(center)
     G = G.reverse()
     depth_list = nx.shortest_path_length(G, center)
-    #     print(depth_list)
     G = G.reverse()
     for n in nx.lexicographical_topological_sort(G):
         if G.in_degree(n) > 0:
@@ -152,7 +153,8 @@ def to_dag(G, plot=False):
     return center_dict[min(center_dict.keys())]
 
 
-def get_dvalue(Graph):
+# calculate the value D(as written on the GM paper)
+def get_d_value(Graph):
     label_size_x = 7
     G = list(Graph.values())
     max_m = -1
@@ -164,6 +166,8 @@ def get_dvalue(Graph):
     return d, max_m
 
 
+# create the features vector for every nodes of the graph in input,using
+# the bias ,M and D(GM algorithm)
 def create_graph_tensor(graphs, bias, max_m, d_value):
     graph_tensor = {}
     for g in graphs.keys():
@@ -185,6 +189,8 @@ def create_graph_tensor(graphs, bias, max_m, d_value):
     return graph_tensor
 
 
+# key algorithm of my GM structure,it create the matrix used to re-compute the features vector
+# for the node of the current depth,from the leaf depth to the root depth going from leaf to root
 def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, label, d_value, device):
     deepthdict_batch_label = torch.zeros(0)
     deepthdict_batch_tensor = {}
