@@ -1,6 +1,8 @@
 import math
 import time
+
 import torch
+
 from .predict_model import test
 
 
@@ -9,7 +11,6 @@ def train(net, data_set_train, data_set_test, optimizer, num_epochs, d_value, cr
     rmse_train = []
     rmse_test = []
     start = time.time()
-    # losses = 0
     dummy_dict, deepthdict_batch_tensor, deepthdict_batch_label = data_set_train
     for epoch in range(num_epochs):
         leaf_index = len(deepthdict_batch_tensor) - 1

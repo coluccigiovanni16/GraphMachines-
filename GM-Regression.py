@@ -21,12 +21,13 @@ parser.add_argument('-hln', "--hidden_layer_size", default=4, help="number of no
 parser.add_argument('-lr', "--learning_rate", default=0.001, help="learning rate for the optimizer")
 parser.add_argument('-r', "--report", default=False, help="save result in a report file")
 parser.add_argument('-root', "--rootDir", default='', help="directory of file")
-parser.add_argument('-trf', "--trainFile", default='', help="train")
-parser.add_argument('-tef', "--testFile", default='', help="test")
+parser.add_argument('-trf', "--trainFile", default=False, help="train")
+parser.add_argument('-tef', "--testFile", default=False, help="test")
 parser.add_argument('-s', "--save", default=False, help="True if you want to save the model")
 parser.add_argument('-l', "--load", default=False, help="True if you want to load the model")
 parser.add_argument('-b', "--bias", default=1, help="bias value")
-parser.add_argument('-rn', "--reportName", default='', help="base name for the report's folder ")
+parser.add_argument('-rn', "--reportName", default=False, help="base name for the report's folder ")
+parser.add_argument('-mp', "--modelPath", default=False, help="model's path")
 args = parser.parse_args()
 num_epochs = int(args.num_epochs)
 hidden_layer = int(args.hidden_layer_size)
@@ -34,6 +35,7 @@ save = bool(args.save)
 load = bool(args.load)
 learning_rate = float(args.learning_rate)
 rootDir = args.rootDir
+modelPath = args.modelPath
 trainFile = args.trainFile
 testFile = args.testFile
 reportName = args.reportName
@@ -41,50 +43,80 @@ bias = int(args.bias)
 device = torch.device(args.device)
 print(args)
 
-datasetFilenameTrain, labelTrain = load_true_value(rootDir, trainFile)
-graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_creator(
-    dict_of_file_name_list(rootDir, datasetFilenameTrain))
-DTrain, maxMTrain = get_dvalue(graphTrain)
+if trainFile and testFile:
+    datasetFilenameTrain, labelTrain = load_true_value(rootDir, trainFile)
+    graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain = dag_creator(
+        dict_of_file_name_list(rootDir, datasetFilenameTrain))
+    DTrain, maxMTrain = get_dvalue(graphTrain)
 
-datasetFilenameTest, labelTest = load_true_value(rootDir, testFile)
-graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_creator(
-    dict_of_file_name_list(rootDir, datasetFilenameTest))
-DTest, maxMTest = get_dvalue(graphTest)
+    datasetFilenameTest, labelTest = load_true_value(rootDir, testFile)
+    graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_creator(
+        dict_of_file_name_list(rootDir, datasetFilenameTest))
+    DTest, maxMTest = get_dvalue(graphTest)
 
-d_value = max(DTrain, DTest)
-maxMValue = max(maxMTrain, maxMTest)
+    d_value = max(DTrain, DTest)
+    maxMValue = max(maxMTrain, maxMTest)
 
-graphTensorTrain = create_graph_tensor(graphTrain, bias, maxMValue, d_value)
-dataSetTrain = dataset_loader(depthNodesTrain, centerNodeTrain, sorOrderedListTrain, graphTensorTrain, labelTrain,
-                              d_value, device)
+    graphTensorTrain = create_graph_tensor(graphTrain, bias, maxMValue, d_value)
+    dataSetTrain = dataset_loader(depthNodesTrain, centerNodeTrain, sorOrderedListTrain, graphTensorTrain, labelTrain,
+                                  d_value, device)
 
-graphTensorTest = create_graph_tensor(graphTest, bias, maxMValue, d_value)
-dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest, d_value,
-                             device)
+    graphTensorTest = create_graph_tensor(graphTest, bias, maxMValue, d_value)
+    dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest,
+                                 d_value,
+                                 device)
 
-input_size = d_value  # The features size (our case is 12)
-hidden_size = hidden_layer  # The number of nodes at the hidden layer
-output_size = 1  # The number of output classes. In this case 1
+    input_size = d_value  # The features size (our case is 12)
+    hidden_size = hidden_layer  # The number of nodes at the hidden layer
+    output_size = 1  # The number of output classes. In this case 1
 
-net = RegressionGm(input_size, hidden_size, output_size).to(device)
+    net = RegressionGm(input_size, hidden_size, output_size).to(device)
 
-criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
+    criterion = nn.MSELoss()
+    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
-RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value, criterion)
-predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
+    if load:
+        net = laod_model(net,modelPath)
+        print("Model correctly laoded")
 
-reportFolder = './reports/REPORT-' + reportName
+    RMSETrain, RMSETest, training_time = train(net, dataSetTrain, dataSetTest, optimizer, num_epochs, d_value,
+                                               criterion)
+    predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
 
-plot_rmse(true, predicted, RMSETrain, RMSETest, testFile, reportFolder)  # funziona
+    reportFolder = './reports/REPORT-' + reportName
 
-report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
-             graphTrain,
-             graphTest, net, criterion, training_time)
+    plot_rmse(true, predicted, RMSETrain, RMSETest, testFile, reportFolder)  # funziona
 
-print(load, save)
-if save:
-    save_model(net, reportName , "/model_" + testFile + ".pth")
-if load:
-    model = laod_model(net, reportName + "/model_" + testFile + ".pth")
-    print(model)
+    report_stamp(reportFolder, testFile, avg_error, RMSETrain, RMSETest, num_epochs, true, predicted, optimizer,
+                 graphTrain,
+                 graphTest, net, criterion, training_time)
+
+    if save:
+        save_model(net, reportName,
+                   "/model_" + testFile + "-Dvalue" + str(d_value) + "-maxMValue" + str(maxMValue) + "-Saved.pth")
+        print("Model correctly saved")
+
+elif testFile and load and modelPath and not trainFile:
+    d_value = int(modelPath.split("-Dvalue")[1].split("-maxMValue")[0])
+    maxMValue = int(modelPath.split("-maxMValue")[1].split("-Saved.pth")[0])
+
+    input_size = d_value  # The features size (our case is 12)
+    hidden_size = hidden_layer  # The number of nodes at the hidden layer
+    output_size = 1  # The number of output classes. In this case 1
+    model = RegressionGm(input_size, hidden_size, output_size).to(device)
+    criterion = nn.MSELoss()
+    net = laod_model(model, modelPath)
+    print("Model correctly laoded")
+
+    datasetFilenameTest, labelTest = load_true_value(rootDir, testFile)
+    graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest = dag_creator(
+        dict_of_file_name_list(rootDir, datasetFilenameTest))
+    graphTensorTest = create_graph_tensor(graphTest, bias, maxMValue, d_value)
+    dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest,
+                                 d_value,
+                                 device)
+    predicted, true, avg_error = test(net, dataSetTest, d_value, criterion)
+    reportFolder = './reports/REPORT-' + reportName
+    plot_rmse(true, predicted, [], [], testFile, reportFolder)
+
+
