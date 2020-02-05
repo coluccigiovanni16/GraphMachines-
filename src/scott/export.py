@@ -48,7 +48,7 @@ def to_dot(graph: Graph, file_path: str, compress_magnets=True):
                     else:
                         magnets[magnet] = magnet
                 output_file.write('"%s" [label=%s] ;\n' % (
-                node.id, "#" + str(magnets[magnet]) if node.meta["is_mirror"] else "*" + str(magnets[magnet])))
+                    node.id, "#" + str(magnets[magnet]) if node.meta["is_mirror"] else "*" + str(magnets[magnet])))
             else:
                 output_file.write('"%s" [label=%s] ;\n' % (node.id, str(node.label) or "."))
         output_file.write('\n')

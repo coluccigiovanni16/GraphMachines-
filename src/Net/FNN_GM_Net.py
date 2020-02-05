@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 
 
+# neural network used in regression task,constructed in run-time,infact it can have any hiddetn layer's node
 class RegressionGm(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(RegressionGm, self).__init__()  # Inherited from the parent class nn.Module
@@ -24,6 +25,7 @@ class RegressionGm(nn.Module):
         #         self.LReluRoot = nn.LeakyReLU(0.25)
         self.LReluRoot = nn.SELU()
 
+    # in the forword we check if it is the last depth(root nodes) to use a different layer
     def forward(self, batch_tensor, deep):
         if deep == 0:
             out = self.fc1Root(batch_tensor)
@@ -37,6 +39,7 @@ class RegressionGm(nn.Module):
             return out
 
 
+# neural network used in classification task,constructed in run-time,infact it can have any hiddetn layer's node
 class ClassificationGm(nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(ClassificationGm, self).__init__()  # Inherited from the parent class nn.Module
@@ -60,6 +63,7 @@ class ClassificationGm(nn.Module):
         self.Drop = nn.Dropout(0.15)
         self.ReluRoot = nn.ReLU()
 
+    # in the forword we check if it is the last depth(root nodes) to use a different layer
     def forward(self, batch_tensor, deep):
         if deep != 0:
             out = self.fc1(batch_tensor)

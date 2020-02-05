@@ -78,7 +78,6 @@ if trainFile and testFile:
     hidden_size = hidden_layer  # The number of nodes at the hidden layer
     output_size = 1  # The number of output classes. In this case 1
 
-
     net = RegressionGm(input_size, hidden_size, output_size).to(device)
 
     criterion = nn.MSELoss()

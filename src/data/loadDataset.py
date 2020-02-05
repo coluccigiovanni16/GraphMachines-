@@ -212,7 +212,7 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
                 deepthdict_batch_parent_list_sons[depth] = [len(sor_ordered_list[molecule][current])]
             queue.extend(sor_ordered_list[molecule][current])
     for depth in reversed(range(1, len(
-            deepthdict_batch_parent_list_sons))):  # non considero il primo livello in quanto sicuramente non ha figli
+            deepthdict_batch_parent_list_sons))):  # doesn't care of the first layer becaeuse it refeare to leaf node (no son)
         node_of_next_level = len(deepthdict_batch_parent_list_sons[depth - 1])
         node_of_level = len(deepthdict_batch_parent_list_sons[depth])
         dummy = torch.zeros(d_value * node_of_next_level, node_of_level)

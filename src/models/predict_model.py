@@ -3,6 +3,8 @@ import math
 import torch
 
 
+# method used to predict the value using the testset in input, can return the list of the predicted values,
+# the true values and the average error or simply the rmse value (if invoked in the train method)
 def predict(net, data_set_train, d_value, criterion, rmse=False):
     avg_error = 0
     with torch.no_grad():

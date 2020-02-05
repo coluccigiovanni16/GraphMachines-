@@ -65,7 +65,7 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
 
         def compute_candidate(id_candidate, id_task, nb_tasks):
             trace("computing candidate %s for restricted election... (%s/%s)" % (
-            id_candidate, str(id_task), str(nb_tasks)), 2)
+                id_candidate, str(id_task), str(nb_tasks)), 2)
             dag = graph.to_dag(id_root=id_candidate, branch_rule=branch_rule, allow_hashes=allow_hashes)
             tree = dag.to_tree(id_root=id_candidate, id_origin=None, modality_origin=None, ids_ignore=unmastered)
             tree.score_tree(tree_function)
@@ -94,7 +94,7 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
         for id_candidate in candidates:
 
             trace("computing candidate %s for restricted election... (%s/%s)" % (
-            id_candidate, str(done), str(len(candidates))), 2)
+                id_candidate, str(done), str(len(candidates))), 2)
             dag = graph.to_dag(id_root=id_candidate, branch_rule=branch_rule, allow_hashes=allow_hashes)
             tree = dag.to_tree(id_root=id_candidate, id_origin=None, modality_origin=None, ids_ignore=unmastered)
             tree.score_tree(tree_function)

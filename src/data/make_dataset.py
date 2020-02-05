@@ -9,7 +9,6 @@ from collections import deque
 
 
 def main():
-
     command = "obabel -ict *.ct -osdf -m"  # command to trasform the .ct file int .sdf file
     folders = []
 
