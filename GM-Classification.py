@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from src.Net.FNN_GM_Net import RegressionGm, save_model, laod_model, ClassificationGm
-from src.data.loadDataset import load_true_value_regression, dag_creator, dict_of_file_name_list, get_d_value, \
+from src.data.load_dataset import load_true_value_regression, dag_creator, dict_of_file_name_list, get_d_value, \
     create_graph_tensor, \
     dataset_loader, load_true_value_classification
 from src.models.predict_model import predict_regression, predict_classification

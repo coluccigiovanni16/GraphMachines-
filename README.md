@@ -7,50 +7,51 @@ Project Organization
 ------------
 
     ├── LICENSE
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── README.md          	<- The top-level README for developers using this project.
     ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── external       	<- Data from third party sources.
+    │   ├── interim        	<- Intermediate data that has been transformed.
+    │   ├── processed      	<- The final, canonical data sets for modeling.
+    │   └── raw            	<- The original, immutable data dump.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    ├── docs               	<- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── models             	<- Trained and serialized models, model predictions, or model
+    │			           summaries
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          	<- Jupyter notebooks. Naming c
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── references         	<- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    ├── reports            	<- Generated analysis as HTML, PDF, LaTeX, generated graphics and 
+    │                              figures to be used in reporting
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
+    ├── Pipfile,Pipfile.lock    <- File used for pipenv 
+    │ 
     │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
+    ├── src                	<- Source code for use in this project.
+    │   ├── __init__.py    	<- Makes src a Python module
     │   │
-    │   ├── data           <- Scripts to download or generate data
+    │   ├── data           	<- Scripts to download or generate data
+    │   │   ├── load_dataset.py
     │   │   └── make_dataset.py
     │   │
-    │   ├── scott       <- Scripts to turn raw data into newick format
-    │   │   └── 
+    │   ├── scott       	<- Scripts to turn raw data into newick format
+    │   │  
     │   │
-    │   ├── models         <- Scripts to train_regression models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
+    │   ├── models         	<- Scripts to train_regression models and then use trained models to
+    │   │   ├── predict_model.py   make predictions
     │   │   └── train_model.py
     │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
+    │   ├── visualization  	<- Scripts to create exploratory and results oriented visualizations
+    │   │      └── visualize.py
+    │   │
+    │   └── Net  	        <- Neural Network 
+    │       └── FNN_GM_Net.py
     │
-    └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
+    ├──GM-Classification.py     <- Script fro classification task
+    │
+    └──GM-Regression.py         <- Script fot regression task
 
 
---------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
