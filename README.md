@@ -153,6 +153,7 @@ python GM-Regression.py -e 1000 -rdd /home/elbarto91/provapipEnv/graphmachines/d
 python GM-Regression.py -rdd data/processed/Acyclic/  --report True -tef testset_0.ds --reportName ACYCLIC --load True --modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
 ```
 
+
 ## Built With
 * [Pycharm](https://www.jetbrains.com/pycharm/) - Integrated development environment (IDE)
 * [Git](https://git-scm.com/) -  distributed version-control system for tracking changes in source code during software development. 
@@ -194,6 +195,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 ## Acknowledgments
 
 * If you want to use a different dataset, be sure to use the same layout of the dataset in processed.
-
-
+* Use ```watch -n 0.5 nvidia-smi``` to check the gpu status
 
