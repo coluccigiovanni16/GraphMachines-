@@ -4,11 +4,11 @@ Implementation of Graph Machines using python, and their application to a datase
 
 ## Table of Contents
 
-- [Project Organization](##Project Organization)
-- [Getting Started](##Getting Started)
-- [Usage](##Usage)
-- [Built With](##Built With)
-- [Contributing](##Contributing)
+- [Project Organization](#Project Organization)
+- [Getting Started](#Getting Started)
+- [Usage](#Usage)
+- [Built With](#Built With)
+- [Contributing](#Contributing)
 - [Authors](#Authors)
 - [License](#License)
 - [Acknowledgments](#acknowledgments)
@@ -197,6 +197,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) f
 ## Acknowledgments
 
 * If you want to use a different dataset, be sure to use the same layout of the dataset in processed.
-* 
+
 
 
