@@ -82,9 +82,9 @@ def load_true_value_classification(base, filenamepath):
         if not line:
             break
         value = line.split(' ')
-        if (int(value[1])==-1):
-                Y[value[0]] = torch.Tensor([0])
-        if (int(value[1])==1):
+        if (int(value[1]) == -1):
+            Y[value[0]] = torch.Tensor([0])
+        if (int(value[1]) == 1):
             Y[value[0]] = torch.Tensor([int(value[1])])
         datasetname.append(base + value[0])
     # close the pointer to that file

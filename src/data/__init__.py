@@ -1,3 +1,3 @@
-__all__ = ['load_dataset.py', 'make_dataset']
+__all__ = ['load_dataset', 'make_dataset']
 
 from . import *

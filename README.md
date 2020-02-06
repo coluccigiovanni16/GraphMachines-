@@ -3,6 +3,39 @@ GraphMachines
 
 Implementation of graph machines
 
+  <a href="https://www.ensicaen.fr">
+    <img alt="Ensicaen" title="Ensicaen" src="https://www.ensicaen.fr/wp-content/uploads/2017/03/LogoENSICAEN_institutionnel_couleurs_72dpi-e1576235617909.jpg" width="250">
+  </a>
+  <a href="https://www.greyc.fr/">
+    <img alt="Greyc" title="Greyc" src="https://captil.greyc.fr/userfiles/images/logos/GREYC.jpg" width="250">
+  </a>
+  <a href="https://www.unisa.it/">
+    <img alt="Unisa" title="Unisa" src="https://www.unisa.it/rescue/img/logo_standard.png" width="250">
+  </a>
+  <a href="https://www.diem.unisa.it/">
+    <img alt="Diem" title="DIEM" src="https://elearning.diem.unisa.it/alr/logo.jpg" width="250">
+  </a>
+
+
+
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Feedback](#feedback)
+- [Contributors](#contributors)
+- [Build Process](#build-process)
+- [Backers](#backers-)
+- [Sponsors](#sponsors-)
+- [Acknowledgments](#acknowledgments)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
 Project Organization
 ------------
 
