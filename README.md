@@ -143,17 +143,14 @@ optional arguments:
 ```
 ### TRAIN NEURAL NETWORK 
 ```
-python GM-Regression.py -e 10000 -root data/processed/Acyclic/ -trf trainset_0.ds 
--tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
---modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth 
+python GM-Regression.py -e 1000 -rdd /home/elbarto91/provapipEnv/graphmachines/data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save True
 
 ```
 
 ### PREDICT USING A TRAINED NEURAL NETWORK 
+(Check that yu have a saved model)
 ```
-python GM-Regression.py -e 10000 -root data/processed/Acyclic/  
--tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
---modelPath odels/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
+python GM-Regression.py -rdd data/processed/Acyclic/  --report True -tef testset_0.ds --reportName ACYCLIC --load True --modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
 ```
 
 ## Built With
