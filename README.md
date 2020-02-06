@@ -1,7 +1,7 @@
 GraphMachines
 ==============================
 
-Implementatio of graph machines
+Implementation of graph machines
 
 Project Organization
 ------------
@@ -49,9 +49,17 @@ Project Organization
     │   └── Net  	        <- Neural Network 
     │       └── FNN_GM_Net.py
     │
-    ├──GM-Classification.py     <- Script fro classification task
+    ├──GM-Classification.py     <- Script for classification task
     │
-    └──GM-Regression.py         <- Script fot regression task
+    └──GM-Regression.py         <- Script for regression task
 
 
 
+@inproceedings{bloyet2019scott,
+  title={Scott: A method for representing graphs as rooted trees for graph canonization},
+  author={Bloyet, Nicolas and Marteau, Pierre-Fran{\c{c}}ois and Frenod, Emmanuel},
+  booktitle={International Conference on Complex Networks and Their Applications},
+  pages={578--590},
+  year={2019},
+  organization={Springer}
+}
