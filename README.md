@@ -1,21 +1,21 @@
-#Graph Machines
+# Graph Machines
 
 Implementation of Graph Machines using python, and their application to a dataset composed of molecule. 
 
 ## Table of Contents
 
-- [Project Organization](#Project Organization)
-- [Getting Started](#Getting Started)
+- [Project Organization](#ProjectOrganization)
+- [Getting Started](#GettingStarted)
 - [Usage](#Usage)
-- [Built With](#Built With)
+- [Built With](#BuiltWith)
 - [Contributing](#Contributing)
 - [Authors](#Authors)
 - [License](#License)
-- [Acknowledgments](#acknowledgments)
+- [Acknowledgments](#Acknowledgments)
 
 
 
-##Project Organization
+## Project Organization
 
     ├── LICENSE
     ├── README.md          	<- The top-level README for developers using this project.
@@ -72,11 +72,11 @@ Implementation of Graph Machines using python, and their application to a datase
 These instructions will get you a copy of the project up and running on your local machine for development 
 and testing purposes. 
 
-#### Dataset
+### Dataset
 The datasets used can be downloaded from :
 https://brunl01.users.greyc.fr/CHEMISTRY/
 
-#### Prerequisites
+### Prerequisites
 
 First of all you need to get this repo on your pc:
 ```
@@ -86,7 +86,7 @@ The repository downloaded is ready-to-go, so you may only extract it.
 To execute the script(train/predict) in a separate environment,
 must be installed python 3.7(.5) and pipenv.
 
-#### Installing
+### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
@@ -141,7 +141,7 @@ optional arguments:
                         model's path
 
 ```
-#### TRAIN NEURAL NETWORK 
+### TRAIN NEURAL NETWORK 
 ```
 python GM-Regression.py -e 10000 -root data/processed/Acyclic/ -trf trainset_0.ds 
 -tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
@@ -149,7 +149,7 @@ python GM-Regression.py -e 10000 -root data/processed/Acyclic/ -trf trainset_0.d
 
 ```
 
-#### PREDICT USING A TRAINED NEURAL NETWORK 
+### PREDICT USING A TRAINED NEURAL NETWORK 
 ```
 python GM-Regression.py -e 10000 -root data/processed/Acyclic/  
 -tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
