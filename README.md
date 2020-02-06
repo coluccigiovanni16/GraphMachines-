@@ -4,14 +4,14 @@ Implementation of Graph Machines using python, and their application to a datase
 
 ## Table of Contents
 
-- [Project Organization](#ProjectOrganization)
-- [Getting Started](#GettingStarted)
-- [Usage](#Usage)
-- [Built With](#BuiltWith)
-- [Contributing](#Contributing)
-- [Authors](#Authors)
-- [License](#License)
-- [Acknowledgments](#Acknowledgments)
+- [Project Organization](#project-organization)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Built With](#built-with)
+- [Thanks to](#thanks-to)
+- [Authors](#authors)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
 
 
