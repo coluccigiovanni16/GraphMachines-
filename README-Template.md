@@ -72,7 +72,7 @@ Implementation of Graph Machines using python, and their application to a datase
 These instructions will get you a copy of the project up and running on your local machine for development 
 and testing purposes. 
 
-### Dataset
+#### Dataset
 The datasets used can be downloaded from :
 https://brunl01.users.greyc.fr/CHEMISTRY/
 
@@ -108,9 +108,9 @@ sudo pipenv install
 ## Usage
 
 ```
-usage: GM-xxxxxxxx.py [-h] [-d DEVICE] [-e NUM_EPOCHS]
+usage: GM-Regression.py [-h] [-d DEVICE] [-e NUM_EPOCHS]
                         [-hln HIDDEN_LAYER_SIZE] [-lr LEARNING_RATE]
-                        [-r REPORT] [-root ROOTDIR] [-trf TRAINFILE]
+                        [-r REPORT] [-rdd ROOTDIRDATASET] [-trf TRAINFILE]
                         [-tef TESTFILE] [-s SAVE] [-l LOAD] [-b BIAS]
                         [-rn REPORTNAME] [-mp MODELPATH]
 
@@ -119,29 +119,42 @@ optional arguments:
   -d DEVICE, --device DEVICE
                         device to use(GPU or CPU(defualt))
   -e NUM_EPOCHS, --num_epochs NUM_EPOCHS
-                        number of epochs
+                        number of epochs,default=10000
   -hln HIDDEN_LAYER_SIZE, --hidden_layer_size HIDDEN_LAYER_SIZE
-                        number of nodes for the hidden layer
+                        number of nodes for the hidden layer, default = 4
   -lr LEARNING_RATE, --learning_rate LEARNING_RATE
-                        learning rate for the optimizer
+                        learning rate for the optimizer, default = 0.001
   -r REPORT, --report REPORT
                         save result in a report file
-  -root ROOTDIR, --rootDir ROOTDIR
-                        directory of file
+  -rdd ROOTDIRDATASET, --rootDirDataset ROOTDIRDATASET
+                        directory of dataset files
   -trf TRAINFILE, --trainFile TRAINFILE
-                        train_regression
+                        dataset containing the name on the trainset files
   -tef TESTFILE, --testFile TESTFILE
-                        predict_regression
-  -s SAVE, --save SAVE  True if you want to save the model
-  -l LOAD, --load LOAD  True if you want to load the model
-  -b BIAS, --bias BIAS  bias value
+                        dataset containing the name on the testset files
+  -s SAVE, --save SAVE  True if you want to save the model, default = False
+  -l LOAD, --load LOAD  True if you want to load the model, default = False
+  -b BIAS, --bias BIAS  bias value, default = 1
   -rn REPORTNAME, --reportName REPORTNAME
                         base name for the report's folder
   -mp MODELPATH, --modelPath MODELPATH
                         model's path
 
 ```
+#### TRAIN NEURAL NETWORK 
+```
+python GM-Regression.py -e 10000 -root data/processed/Acyclic/ -trf trainset_0.ds 
+-tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
+--modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth 
 
+```
+
+#### PREDICT USING A TRAINED NEURAL NETWORK 
+```
+python GM-Regression.py -e 10000 -root data/processed/Acyclic/  
+-tef testset_0.ds --reportName ACYCLIC --load True --save True --device cuda
+--modelPath odels/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
+```
 
 ## Built With
 * [Pycharm](https://www.jetbrains.com/pycharm/) - Integrated development environment (IDE)
