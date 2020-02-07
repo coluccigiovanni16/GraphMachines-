@@ -141,6 +141,11 @@ optional arguments:
                         model's path
 
 ```
+In order to use the environment created with pipenv you need to launch it(from the root folder of the project) :
+```
+pipenv shell
+```
+
 ### TRAIN NEURAL NETWORK 
 ```
 python GM-Regression.py -e 1000 -rdd data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save True
