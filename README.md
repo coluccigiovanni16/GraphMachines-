@@ -88,7 +88,6 @@ must be installed python 3.7(.5) and pipenv.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
 
 Get python3:
 ```
@@ -103,7 +102,10 @@ From the main folder of the project,in order to install the environment:
 ```
 sudo pipenv install
 ```
-
+In order to display the several plot, may need to install a package "tkinter" :
+```
+sudo apt-get install python3-tk
+```
 
 ## Usage
 
