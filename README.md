@@ -143,7 +143,7 @@ optional arguments:
 ```
 ### TRAIN NEURAL NETWORK 
 ```
-python GM-Regression.py -e 1000 -rdd /home/elbarto91/provapipEnv/graphmachines/data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save True
+python GM-Regression.py -e 1000 -rdd data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save True
 
 ```
 
