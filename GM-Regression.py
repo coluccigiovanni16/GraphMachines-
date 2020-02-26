@@ -72,9 +72,6 @@ if trainFile and testFile:
     dataSetTest = dataset_loader(depthNodesTest, centerNodeTest, sorOrderedListTest, graphTensorTest, labelTest,
                                  d_value, device)
 
-    del graphTrain, sorOrderedListTrain, depthNodesTrain, centerNodeTrain, datasetFilenameTrain, labelTrain, \
-        datasetFilenameTest, labelTest, graphTest, sorOrderedListTest, depthNodesTest, centerNodeTest
-
     # layer size of the neural network(FNN)
     input_size = d_value  # The features size (our case is 12)
     hidden_size = hidden_layer  # The number of nodes at the hidden layer
@@ -92,8 +89,7 @@ if trainFile and testFile:
 
     # train_regression the NN
     RMSETrain, RMSETest, training_time = train_regression(net, dataSetTrain, dataSetTest, optimizer, num_epochs,
-                                                          d_value,
-                                                          criterion)
+                                                          d_value, criterion)
     # predict_regression using NN and testset
     predicted, true, avg_error = predict_regression(net, dataSetTest, d_value, criterion)
 
