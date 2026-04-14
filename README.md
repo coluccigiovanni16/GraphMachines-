@@ -1,6 +1,6 @@
 # Graph Machines
 
-Implementation of Graph Machines using python, and their application to a dataset composed of molecule. 
+Implementation of Graph Machines using Python, and their application to a dataset composed of molecules. 
 
 ## Table of Contents
 
@@ -84,7 +84,7 @@ git clone https://github.com/elbarto91/GraphMachines-.git
 ```
 The repository downloaded is ready-to-go, so you may only extract it.
 To execute the script(train/predict) in a separate environment,
-must be installed python 3.7(.5) and pipenv.
+must be installed python 3.10+ and pipenv.
 
 ### Installing
 
@@ -92,7 +92,7 @@ must be installed python 3.7(.5) and pipenv.
 Get python3:
 ```
 sudo apt-get update
-sudo apt-get install python3.7
+sudo apt-get install python3.10
 ```
 Get pipenv:
 ```
@@ -119,7 +119,7 @@ usage: GM-Regression.py [-h] [-d DEVICE] [-e NUM_EPOCHS]
 optional arguments:
   -h, --help            show this help message and exit
   -d DEVICE, --device DEVICE
-                        device to use(GPU or CPU(defualt))
+                        device to use (GPU or CPU (default))
   -e NUM_EPOCHS, --num_epochs NUM_EPOCHS
                         number of epochs,default=10000
   -hln HIDDEN_LAYER_SIZE, --hidden_layer_size HIDDEN_LAYER_SIZE
@@ -134,8 +134,8 @@ optional arguments:
                         dataset containing the name on the trainset files
   -tef TESTFILE, --testFile TESTFILE
                         dataset containing the name on the testset files
-  -s SAVE, --save SAVE  True if you want to save the model, default = False
-  -l LOAD, --load LOAD  True if you want to load the model, default = False
+  -s, --save            save the model after training
+  -l, --load            load a pretrained model
   -b BIAS, --bias BIAS  bias value, default = 1
   -rn REPORTNAME, --reportName REPORTNAME
                         base name for the report's folder
@@ -150,21 +150,21 @@ pipenv shell
 
 ### TRAIN NEURAL NETWORK 
 ```
-python GM-Regression.py -e 1000 -rdd data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save True
+python GM-Regression.py -e 1000 -rdd data/processed/Acyclic/ -trf trainset_0.ds -tef testset_0.ds --reportName ACYCLIC --save
 
 ```
 
 ### PREDICT USING A TRAINED NEURAL NETWORK 
 (Check that yu have a saved model)
 ```
-python GM-Regression.py -rdd data/processed/Acyclic/  --report True -tef testset_0.ds --reportName ACYCLIC --load True --modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
+python GM-Regression.py -rdd data/processed/Acyclic/ --report -tef testset_0.ds --reportName ACYCLIC --load --modelPath models/ACYCLIC/model_testset_0.ds-Dvalue12-maxMValue4-Saved.pth
 ```
 
 
 ## Built With
 * [Pycharm](https://www.jetbrains.com/pycharm/) - Integrated development environment (IDE)
 * [Git](https://git-scm.com/) -  distributed version-control system for tracking changes in source code during software development. 
-* [Python 3.7.5](https://www.python.org/) - Interpreted, high-level, general-purpose programming language
+* [Python 3.10](https://www.python.org/) - Interpreted, high-level, general-purpose programming language
 * [Pytorch](https://pytorch.org/) - An open source machine learning framework
 * [Jupyter Notebook](https://jupyter.org/) - Open-source web application 
 * [Pipenv](https://github.com/pypa/pipenv) - Packaging tool for Python 

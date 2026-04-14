@@ -57,17 +57,14 @@ def load_true_value_regression(base, filename_path):
     y = {}
     dataset_name = []
     filename_path = base + filename_path
-    file_handle = open(filename_path, 'r')
-    while True:
-        # read a single line
-        line = file_handle.readline()
-        if not line:
-            break
-        value = line.split(' ')
-        y[value[0]] = torch.FloatTensor([float(value[1])])
-        dataset_name.append(base + value[0])
-    # close the pointer to that file
-    file_handle.close()
+    with open(filename_path, 'r') as file_handle:
+        for line in file_handle:
+            line = line.strip()
+            if not line:
+                break
+            value = line.split(' ')
+            y[value[0]] = torch.FloatTensor([float(value[1])])
+            dataset_name.append(base + value[0])
     return dataset_name, y
 
 
@@ -75,20 +72,17 @@ def load_true_value_classification(base, filenamepath):
     Y = {}
     datasetname = []
     filenamepath = base + filenamepath
-    filehandle = open(filenamepath, 'r')
-    while True:
-        # read a single line
-        line = filehandle.readline()
-        if not line:
-            break
-        value = line.split(' ')
-        if (int(value[1]) == -1):
-            Y[value[0]] = torch.Tensor([0])
-        if (int(value[1]) == 1):
-            Y[value[0]] = torch.Tensor([int(value[1])])
-        datasetname.append(base + value[0])
-    # close the pointer to that file
-    filehandle.close()
+    with open(filenamepath, 'r') as filehandle:
+        for line in filehandle:
+            line = line.strip()
+            if not line:
+                break
+            value = line.split(' ')
+            if int(value[1]) == -1:
+                Y[value[0]] = torch.Tensor([0])
+            if int(value[1]) == 1:
+                Y[value[0]] = torch.Tensor([int(value[1])])
+            datasetname.append(base + value[0])
     return datasetname, Y
 
 

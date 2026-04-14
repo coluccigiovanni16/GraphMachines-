@@ -79,6 +79,6 @@ def save_model(model, reportName, model_name):
     torch.save(model.state_dict(), 'models/' + reportName + model_name)
 
 
-def laod_model(model, path):
-    model.load_state_dict(torch.load(path))
+def load_model(model, path):
+    model.load_state_dict(torch.load(path, weights_only=True))
     return model
