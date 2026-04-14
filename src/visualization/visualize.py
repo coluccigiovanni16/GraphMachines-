@@ -4,8 +4,14 @@ import matplotlib.pyplot as plt
 
 
 # save in a text file some info regarding the train_regression/prediction task
-def report_stamp(report_folder, dataset_name, avg_error, rmse_train, rmse_test, num_epochs, true, predicted, optimizer,
-                 graph_set_train, graph_set_test, net, criterion, training_time):
+def report_stamp(report_folder, dataset_name, avg_error, rmse_train, rmse_test, num_epochs, true, predicted,
+                 report_context):
+    optimizer = report_context["optimizer"]
+    graph_set_train = report_context["graph_set_train"]
+    graph_set_test = report_context["graph_set_test"]
+    net = report_context["net"]
+    criterion = report_context["criterion"]
+    training_time = report_context["training_time"]
     Path(report_folder).mkdir(parents=True, exist_ok=True)
     file_name = report_folder + '/' + dataset_name + '_ReportGenerale.txt'
     file_name_rmse = report_folder + '/' + dataset_name + '_ReportRMSE.txt'

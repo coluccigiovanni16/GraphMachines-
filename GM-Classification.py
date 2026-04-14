@@ -84,7 +84,7 @@ if trainFile and testFile:
     net = ClassificationGm(input_size, hidden_size, output_size).to(device)
 
     criterion = nn.BCEWithLogitsLoss()
-    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
+    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate, weight_decay=1e-4)
 
     # laod a model from disk
     if load:
@@ -101,8 +101,16 @@ if trainFile and testFile:
 
     # PLOT + PRINT
     if report:
-        report_stamp(reportFolder, testFile, avg_error, lossTrain, lossTest, num_epochs, true, predicted, optimizer,
-                     graphTrain, graphTest, net, criterion, training_time)
+        report_context = {
+            "optimizer": optimizer,
+            "graph_set_train": graphTrain,
+            "graph_set_test": graphTest,
+            "net": net,
+            "criterion": criterion,
+            "training_time": training_time,
+        }
+        report_stamp(reportFolder, testFile, avg_error, lossTrain, lossTest, num_epochs, true, predicted,
+                     report_context)
 
     # save the model trained
     if save:

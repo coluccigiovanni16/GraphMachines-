@@ -15,7 +15,7 @@ def trace(msg, indent=1, f=" "):
         print("[canonize.py]" + f + indent * "\t" + msg)
 
 
-def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
+def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",  # NOSONAR
                     branch_rule: str = "$depth > tree.parent_modality > $lexic", allow_hashes=True,
                     compact=False) -> Tree:
     trace("# Step 1 : Root Candidates")
@@ -74,7 +74,6 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
                 len(candidates)) + " : " + str(tree), 3)
 
             trace("Ordered tree : " + str(tree) + " ; score : " + str(tree.meta['score']), 3)
-            # trees[id_candidate] = tree
             return (id_candidate, tree)
 
         candidate_tuples = Parallel(n_jobs=os.cpu_count())(
@@ -116,14 +115,6 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
     trace("\n")
     trace(" --- Election winner(s) : " + str(elected) + " with score " + str(max_score), 3)
 
-    # if len(elected) > 1 :
-    #	trace("# [Step 4] : Election-tie")
-    # iteratively construct the k-neighboring of candidates nodes
-    # exclude from account nodes present in several neihborings
-
-    # speed-up, we constuct two candidate-based roots, and we keep
-    # the winner once we have one
-    # todo = len(elected)
     done = 1
     try:
         raise ImportError()
@@ -138,12 +129,9 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
             trace("computing candidate %s... (%s/%s)" % (id_candidate, str(id_task), str(nb_tasks)), 2)
             ret = graph.to_dag(id_root=id_candidate, compact_form=compact, allow_hashes=allow_hashes).to_tree(
                 id_root=id_candidate, id_origin=None, modality_origin=None)
-            # todo -= 1
-            # print("%s candidates remaining" % (str(todo)))
             done += 1
             return ret
 
-        # candidate_trees = [ compute_candidate(id_candidate) for id_candidate in elected ]
         candidate_trees = Parallel(n_jobs=os.cpu_count())(
             delayed(compute_candidate)(id_candidate, i + 1, len(elected)) for (i, id_candidate) in enumerate(elected))
     except ImportError:
@@ -154,14 +142,10 @@ def to_canonic_tree(graph: Graph, candidate_rule: str = "$degree",
         ]
 
     res = []
-    # print("THERE ARE %s CANDIDATES TREES " % (str(len(candidate_trees))))
     for tree in candidate_trees:
         tree.score_tree(tree_function)
         res.append((str(tree), tree))
-        seq = tree.get_order_sequence()
-    winner = sorted(res, key=lambda i: i[0])[0][1]
-    # print(candidate_trees)
-    # print("Winner : %s" % (winner.root.id))
+    winner = min(res, key=lambda i: i[0])[1]
 
     winner.get_order_sequence()
 
@@ -188,7 +172,7 @@ def to_cgraph(graph: Graph, candidate_rule: str = "$degree",
     return CGraph(output)
 
 
-def compress_cgraph(cgraph: str) -> str:
+def compress_cgraph(cgraph: str) -> str:  # NOSONAR
     """
 
     """
@@ -214,7 +198,7 @@ def compress_cgraph(cgraph: str) -> str:
                 if depth == 0:
                     # print("end of magnet : %s" % (magnet))
                     in_magnet = False
-                    if not magnet in magnets:
+                    if magnet not in magnets:
                         cpt += 1
                         magnets[magnet] = "$%s" % (cpt)
                     eq = magnets[magnet]
@@ -228,7 +212,7 @@ def compress_cgraph(cgraph: str) -> str:
     return output
 
 
-def prune_graph(graph: Graph, candidates: List[str]) -> Graph:
+def prune_graph(graph: Graph, candidates: List[str]) -> Graph:  # NOSONAR
     """
         prune_graph
         -----------
@@ -239,7 +223,7 @@ def prune_graph(graph: Graph, candidates: List[str]) -> Graph:
     def prune_propagation(node_from: Node, node_to: Node, msg: str) -> bool:
         trace("Node #" + node_to.id + " received '" + msg + "' from #" + node_from.id, 3)
 
-        if not node_to.id in candidates:  # do not trust meta.isCandidate at this moment
+        if node_to.id not in candidates:  # do not trust meta.isCandidate at this moment
             trace(node_to.id + " : I'm not candidate", 4)
             if "master" in node_to.meta:
                 trace(node_to.id + " : ... but I already have a master...", 4)

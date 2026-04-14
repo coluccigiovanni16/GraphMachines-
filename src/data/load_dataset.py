@@ -29,7 +29,7 @@ def parse_newick(newick_string):
 
 
 # have in input the path of the molecule in an sdf mode,and give in output a DAG graph
-def molecule_to_networkxGraph(filename):
+def molecule_to_networkx_graph(filename):
     compounds = parse.from_sdf(
         file_path=filename, ignore_hydrogens=True)[0]
     simple_cgraph = str(canonize.to_cgraph(compounds))
@@ -91,7 +91,7 @@ def dict_of_file_name_list(base, dataset_name):
     graphs_dict_list = {}
     # construct graphs from every single .ct file
     for filename in dataset_name:
-        graphs_dict_list[filename.replace(base, '')] = molecule_to_networkxGraph(filename.replace(".ct", ".sdf"))
+        graphs_dict_list[filename.replace(base, '')] = molecule_to_networkx_graph(filename.replace(".ct", ".sdf"))
     return graphs_dict_list
 
 
@@ -139,7 +139,7 @@ def dag_creator(graphs_dict_list):
     return final_graphs_dict, sor_ordered_list, depth_nodes, centers
 
 
-def to_dag(G, plot=False):
+def to_dag(graph, plot=False):
     '''  docstring:
     converts an acyclic graph to a DAG
     with branches yet directed towards the center.
@@ -147,33 +147,33 @@ def to_dag(G, plot=False):
     Output: DAG
     '''
     if plot:
-        nx.draw(G, with_labels=True, with_attributes=True)
+        nx.draw(graph, with_labels=True, with_attributes=True)
         plt.show()
     center_dict = {}
     graph_ordered_node_trav = {}
-    center = [n for n, d in G.out_degree() if d == 0][0]
-    G = G.reverse()
-    depth_list = nx.shortest_path_length(G, center)
-    G = G.reverse()
-    for n in nx.lexicographical_topological_sort(G):
-        if G.in_degree(n) > 0:
+    center = [n for n, d in graph.out_degree() if d == 0][0]
+    graph = graph.reverse()
+    depth_list = nx.shortest_path_length(graph, center)
+    graph = graph.reverse()
+    for n in nx.lexicographical_topological_sort(graph):
+        if graph.in_degree(n) > 0:
             son_list_ordered = []
-            for p in sorted(list(G.predecessors(n)), key=lambda x: G.nodes[x]['atom']):
-                G.nodes[n]['atom'] = G.nodes[n]['atom'] + G.nodes[p]['atom']
+            for p in sorted(graph.predecessors(n), key=lambda x: graph.nodes[x]['atom']):
+                graph.nodes[n]['atom'] = graph.nodes[n]['atom'] + graph.nodes[p]['atom']
                 son_list_ordered.append(p)
             graph_ordered_node_trav[n] = son_list_ordered
         else:
             graph_ordered_node_trav[n] = []
-    center_dict[G.nodes[center]['atom']] = G, graph_ordered_node_trav, depth_list, center
+    center_dict[graph.nodes[center]['atom']] = graph, graph_ordered_node_trav, depth_list, center
     return center_dict[min(center_dict.keys())]
 
 
 # calculate the value D(as written on the GM paper)
-def get_d_value(Graph):
+def get_d_value(graph_dict):
     label_size_x = 7
-    G = list(Graph.values())
+    graphs = list(graph_dict.values())
     max_m = -1
-    for g in G:
+    for g in graphs:
         for n in g.nodes():
             max_m = (max(max_m, g.in_degree(n)))
             # Size of the node array
@@ -185,7 +185,7 @@ def get_d_value(Graph):
 # the bias ,M and D(GM algorithm)
 def create_graph_tensor(graphs, bias, max_m, d_value):
     graph_tensor = {}
-    for g in graphs.keys():
+    for g in graphs:
         G = graphs[g]
         nodes = {}
         for n in nx.lexicographical_topological_sort(G):
@@ -218,7 +218,7 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
         while len(queue) > 0:
             current = queue.pop(0)
             depth = depth_nodes[molecule][current]
-            if depth in deepthdict_batch_tensor.keys():
+            if depth in deepthdict_batch_tensor:
                 deepthdict_batch_tensor[depth] = torch.cat(
                     [deepthdict_batch_tensor[depth], graph_tensor[molecule][current]], dim=0)
                 deepthdict_batch_parent_list_sons[depth].append(len(sor_ordered_list[molecule][current]))
@@ -235,7 +235,7 @@ def dataset_loader(depth_nodes, center_node, sor_ordered_list, graph_tensor, lab
         vert = 1
         for node in deepthdict_batch_parent_list_sons[depth - 1]:
             vert_temp = vert
-            for son in range(node):
+            for _ in range(node):
                 dummy[vert_temp][oriz] = 1
                 oriz += 1
                 vert_temp += 1
